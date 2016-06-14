@@ -1,0 +1,4 @@
+Patches:
+
+- Doctrine: fix postgres column escaping when using reserved keyword: https://github.com/doctrine/dbal/pull/627
+- patchwork/utf8: Remove trigger_error() that spammed the error log
