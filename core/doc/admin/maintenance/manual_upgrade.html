@@ -128,44 +128,37 @@ your HTTP user. This example is for Ubuntu Linux:</p>
 <p>The other way is by entering your <code class="docutils literal"><span class="pre">config.php</span></code> file and changing
 <code class="docutils literal"><span class="pre">'maintenance'</span> <span class="pre">=&gt;</span> <span class="pre">false,</span></code> to <code class="docutils literal"><span class="pre">'maintenance'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code>.</p>
 <ol class="arabic">
-<li><p class="first">Back up your existing Nextcloud Server database, data directory, and
+<li><p class="first">Back up your existing Nextcloud or ownCloud Server database, data directory, and
 <code class="docutils literal"><span class="pre">config.php</span></code> file. (See <a class="reference internal" href="backup.html"><em>Backing up Nextcloud</em></a>.)</p>
 </li>
 <li><p class="first">Download and unpack the latest Nextcloud Server release (Archive file) from
-<a class="reference external" href="https://owncloud.org/install/">owncloud.org/install/</a> into an empty directory outside
+<a class="reference external" href="https://nextcloud.com/install/">nextcloud.com/install/</a> into an empty directory outside
 of your current installation.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">To unpack your new tarball, run:
-tar xjf owncloud-[version].tar.bz2</p>
+tar xjf nextcloud-[version].tar.bz2</p>
 </div>
 </li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Enterprise users must download their new Nextcloud archives from
-their accounts on <a class="reference external" href="https://customer.owncloud.com/owncloud/">https://customer.owncloud.com/owncloud/</a></p>
-</div>
-<ol class="arabic" start="3">
 <li><p class="first">Stop your Web server.</p>
 </li>
-<li><p class="first">Rename your current Nextcloud directory, for example <code class="docutils literal"><span class="pre">owncloud-old</span></code>.</p>
+<li><p class="first">Rename your current ownCloud or Nextcloud directory, for example <code class="docutils literal"><span class="pre">owncloud-old</span></code>.</p>
 </li>
-<li><p class="first">Unpacking the new archive creates a new <code class="docutils literal"><span class="pre">owncloud</span></code> directory populated
+<li><p class="first">Unpacking the new archive creates a new <code class="docutils literal"><span class="pre">Nextcloud</span></code> directory populated
 with your new server files. Copy this directory and its contents to the
 original location of your old server, for example <code class="docutils literal"><span class="pre">/var/www/</span></code>, so that
-once again you have <code class="docutils literal"><span class="pre">/var/www/owncloud</span></code>.</p>
+you have <code class="docutils literal"><span class="pre">/var/www/nextcloud</span></code>.</p>
 </li>
 <li><p class="first">Copy the <code class="docutils literal"><span class="pre">config.php</span></code> file from your old Nextcloud directory to your new
 Nextcloud directory.</p>
 </li>
 <li><p class="first">If you keep your <code class="docutils literal"><span class="pre">data/</span></code> directory in your <code class="docutils literal"><span class="pre">owncloud/</span></code> directory, copy
-it from your old version of Nextcloud to your new <code class="docutils literal"><span class="pre">owncloud/</span></code>. If you keep
+it from your old version of Nextcloud to your new <code class="docutils literal"><span class="pre">nextcloud/</span></code>. If you keep
 it outside of <code class="docutils literal"><span class="pre">owncloud/</span></code> then you don&#8217;t have to do anything with it,
 because its location is configured in your original <code class="docutils literal"><span class="pre">config.php</span></code>, and
 none of the upgrade steps touch it.</p>
 </li>
-<li><p class="first">If you are using 3rd party applications, look in your new <code class="docutils literal"><span class="pre">owncloud/apps/</span></code>
+<li><p class="first">If you are using 3rd party applications, look in your new <code class="docutils literal"><span class="pre">nextcloud/apps/</span></code>
 directory to see if they are there. If not, copy them from your old <code class="docutils literal"><span class="pre">apps/</span></code>
 directory to your new one. Make sure the directory permissions of your third
 party application directories are the same as for the other ones.</p>
@@ -194,7 +187,8 @@ ones are enabled. Re-enable your third-party apps. Then apply strong
 permissions to your Nextcloud directories (<a class="reference internal" href="../installation/installation_wizard.html#strong-perms-label"><span>Setting Strong Directory Permissions</span></a>).</p>
 <div class="section" id="previous-nextcloud-releases">
 <h2>Previous Nextcloud Releases<a class="headerlink" href="#previous-nextcloud-releases" title="Permalink to this headline">¶</a></h2>
-<p>You&#8217;ll find previous Nextcloud releases in the <a class="reference external" href="https://owncloud.org/changelog/">Nextcloud Server Changelog</a>.</p>
+<p>You&#8217;ll find previous ownCloud releases in the <a class="reference external" href="https://owncloud.org/changelog/">ownCloud Server Changelog</a> and previous Nextcloud releases in the
+<a class="reference external" href="https://nextcloud.com/changelog/">Nextcloud Server Changelog</a>.</p>
 </div>
 <div class="section" id="reverse-upgrade">
 <h2>Reverse Upgrade<a class="headerlink" href="#reverse-upgrade" title="Permalink to this headline">¶</a></h2>
@@ -220,7 +214,7 @@ help:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php console.php files:scan --all
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://owncloud.org/support">the owncloud.org support page</a> for further
+<p>See <a class="reference external" href="https://nextcloud.com/support">the nextcloud.com support page</a> for further
 resources for both home and enterprise users.</p>
 <p>Sometimes, Nextcloud can get <em>stuck in a upgrade</em>. This is usually due to the
 process taking too long and encountering a PHP time-out. Stop the upgrade

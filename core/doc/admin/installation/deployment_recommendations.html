@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Nextcloud 9 Server Administration Manual 9 documentation" href="../contents.html" />
     <link rel="up" title="Installation" href="index.html" />
-    <link rel="next" title="Preferred Linux Installation Method" href="linux_installation.html" />
+    <link rel="next" title="Installation Wizard" href="installation_wizard.html" />
     <link rel="prev" title="System Requirements" href="system_requirements.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -82,18 +82,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="linux_installation.html">Preferred Linux Installation Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation Wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing Nextcloud From the Command Line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported Apps in Nextcloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Manual Installation on Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appliance_installation.html">Nextcloud Community Appliance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_54_installation.html">Installing PHP 5.4 on RHEL 6 and CentOS 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_55_installation.html">Installing PHP 5.5 on RHEL 7 and CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_examples.html">Nginx Example Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_8x.html">Nginx configuration for the Nextcloud 8.x branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_9x.html">Nginx Configuration for the Nextcloud 9.x Branches</a></li>
 </ul>
 </li>
@@ -122,7 +119,7 @@
     </a>
   </li>
   <li class="next">
-    <a href="linux_installation.html" title="Next Chapter: Preferred Linux Installation Method"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Preferred Lin... &raquo;</span>
+    <a href="installation_wizard.html" title="Next Chapter: Installation Wizard"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Installation ... &raquo;</span>
     </a>
   </li>
 </ul>
@@ -223,7 +220,7 @@ scale the DB.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Backup</dt>
-<dd><p class="first">Install owncloud, Nextcloud data directory and database on Btrfs filesystem.
+<dd><p class="first">Install Nextcloud data directory and database on Btrfs filesystem.
 Make regular snapshots at desired intervals for zero downtime backups.
 Mount DB partitions with the &#8220;nodatacow&#8221; option to prevent fragmentation.</p>
 <p>Alternatively, make nightly backups with service interruption:</p>
@@ -235,7 +232,7 @@ Mount DB partitions with the &#8220;nodatacow&#8221; option to prevent fragmenta
 <li>Start Apache.</li>
 </ul>
 <p class="last">Then optionally rsync to a backup storage or tape backup. (See the
-<a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html">Maintenance</a> section of the Administration manual for tips on backups
+<a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/maintenance/index.html">Maintenance</a> section of the Administration manual for tips on backups
 and restores.)</p>
 </dd>
 </dl>
@@ -243,7 +240,7 @@ and restores.)</p>
 <li><dl class="first docutils">
 <dt>Authentication</dt>
 <dd><p class="first last">User authentication via one or several LDAP or Active Directory servers. (See
-<a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a> for information on configuring Nextcloud to
+<a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a> for information on configuring Nextcloud to
 use LDAP and AD.)</p>
 </dd>
 </dl>
@@ -263,7 +260,7 @@ for example:
 <li><dl class="first docutils">
 <dt>Memory Caching</dt>
 <dd><p class="first last">A memcache speeds up server performance, and Nextcloud supports four
-memcaches; refer to <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html">Configuring Memory Caching</a> for information on
+memcaches; refer to <a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_server/caching_configuration.html">Configuring Memory Caching</a> for information on
 selecting and configuring a memcache.</p>
 </dd>
 </dl>
@@ -276,7 +273,7 @@ selecting and configuring a memcache.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Nextcloud Edition</dt>
-<dd><p class="first last">Standard Edition. (See <a class="reference external" href="https://owncloud.com/owncloud-server-or-enterprise-edition/">Nextcloud Server or Enterprise Edition</a> for
+<dd><p class="first last">Standard Edition. (See <a href="#id3"><span class="problematic" id="id4">`Nextcloud Server or Enterprise Edition`_</span></a> for
 comparisons of the Nextcloud editions.)</p>
 </dd>
 </dl>
@@ -379,7 +376,7 @@ be replicated to a backup MySQL/MariaDB slave instance.</p>
 <li><dl class="first docutils">
 <dt>Authentication</dt>
 <dd><p class="first last">User authentication via one or several LDAP or Active Directory servers.
-(See <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a>  for information on configuring
+(See <a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a>  for information on configuring
 Nextcloud to use LDAP and AD.)</p>
 </dd>
 </dl>
@@ -406,7 +403,7 @@ for example:
 <li><dl class="first docutils">
 <dt>Memory Caching</dt>
 <dd><p class="first last">A memcache speeds up server performance, and Nextcloud supports four
-memcaches; refer to <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html">Configuring Memory Caching</a> for information on
+memcaches; refer to <a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_server/caching_configuration.html">Configuring Memory Caching</a> for information on
 selecting and configuring a memcache.</p>
 </dd>
 </dl>
@@ -420,7 +417,7 @@ Ceph.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Nextcloud Edition</dt>
-<dd><p class="first last">Enterprise Edition. (See <a class="reference external" href="https://owncloud.com/owncloud-server-or-enterprise-edition/">Nextcloud Server or Enterprise Edition</a> for
+<dd><p class="first last">Enterprise Edition. (See <a href="#id5"><span class="problematic" id="id6">`Nextcloud Server or Enterprise Edition`_</span></a> for
 comparisons of the Nextcloud editions.)</p>
 </dd>
 </dl>
@@ -520,8 +517,8 @@ be replicated to a backup MySQL/MariaDB slave instance.</p>
 <li><dl class="first docutils">
 <dt>Authentication</dt>
 <dd><p class="first last">User authentication via one or several LDAP or Active Directory
-servers, or SAML/Shibboleth. (See <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a> and
-<a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/enterprise_user_management/user_auth_shibboleth.html">Shibboleth Integration</a>.)</p>
+servers, or SAML/Shibboleth. (See <a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_user/user_auth_ldap.html">User Authentication with LDAP</a> and
+<a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/enterprise_user_management/user_auth_shibboleth.html">Shibboleth Integration</a>.)</p>
 </dd>
 </dl>
 </li>
@@ -540,7 +537,7 @@ optimal scalability.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Caching</dt>
-<dd><p class="first last">Redis for distributed in-memory caching (see <a class="reference external" href="https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html">Configuring Memory
+<dd><p class="first last">Redis for distributed in-memory caching (see <a class="reference external" href="https://docs.nextcloud.org/server/9/admin_manual/configuration_server/caching_configuration.html">Configuring Memory
 Caching</a>).</p>
 </dd>
 </dl>
@@ -555,7 +552,7 @@ be used.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Nextcloud Edition</dt>
-<dd><p class="first last">Enterprise Edition. (See <a class="reference external" href="https://owncloud.com/owncloud-server-or-enterprise-edition/">Nextcloud Server or Enterprise Edition</a> for
+<dd><p class="first last">Enterprise Edition. (See <a href="#id7"><span class="problematic" id="id8">`Nextcloud Server or Enterprise Edition`_</span></a> for
 comparisons of the Nextcloud editions.)</p>
 </dd>
 </dl>
@@ -700,7 +697,7 @@ used to scale-out shibd session storage (see <a class="reference external" href=
     </a>
   </li>
   <li class="next">
-    <a href="linux_installation.html" title="Next Chapter: Preferred Linux Installation Method"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Preferred Lin... &raquo;</span>
+    <a href="installation_wizard.html" title="Next Chapter: Installation Wizard"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Installation ... &raquo;</span>
     </a>
   </li>
 </ul>

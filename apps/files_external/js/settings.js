@@ -305,7 +305,8 @@ StorageConfig.prototype = {
 			mountPoint: this.mountPoint,
 			backend: this.backend,
 			authMechanism: this.authMechanism,
-			backendOptions: this.backendOptions
+			backendOptions: this.backendOptions,
+			testOnly: true
 		};
 		if (this.id) {
 			data.id = this.id;
@@ -332,6 +333,7 @@ StorageConfig.prototype = {
 		$.ajax({
 			type: 'GET',
 			url: OC.generateUrl(this._url + '/{id}', {id: this.id}),
+			data: {'testOnly': true},
 			success: options.success,
 			error: options.error
 		});
@@ -911,6 +913,7 @@ MountConfigListView.prototype = _.extend({
 			$.ajax({
 				type: 'GET',
 				url: OC.generateUrl('apps/files_external/userglobalstorages'),
+				data: {'testOnly': true},
 				contentType: 'application/json',
 				success: function(result) {
 					var onCompletion = jQuery.Deferred();
@@ -1340,6 +1343,33 @@ $(document).ready(function() {
 			$allowUserMounting.trigger('change');
 
 		}
+	});
+
+	$('#global_credentials').on('submit', function() {
+		var $form = $(this);
+		var uid = $form.find('[name=uid]').val();
+		var user = $form.find('[name=username]').val();
+		var password = $form.find('[name=password]').val();
+		var $submit = $form.find('[type=submit]');
+		$submit.val(t('files_external', 'Saving...'));
+		$.ajax({
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify({
+				uid: uid,
+				user: user,
+				password: password
+			}),
+			url: OC.generateUrl('apps/files_external/globalcredentials'),
+			dataType: 'json',
+			success: function() {
+				$submit.val(t('files_external', 'Saved'));
+				setTimeout(function(){
+					$submit.val(t('files_external', 'Save'));
+				}, 2500);
+			}
+		});
+		return false;
 	});
 
 	// global instance

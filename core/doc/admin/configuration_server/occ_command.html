@@ -151,12 +151,12 @@
 interface. You can perform many common server operations with <code class="docutils literal"><span class="pre">occ</span></code>, such as
 installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP
 setting, and more.</p>
-<p><code class="docutils literal"><span class="pre">occ</span></code> is in the <code class="file docutils literal"><span class="pre">owncloud/</span></code> directory; for example
-<code class="file docutils literal"><span class="pre">/var/www/owncloud</span></code> on Ubuntu Linux. <code class="docutils literal"><span class="pre">occ</span></code> is a PHP script. <strong>You must
+<p><code class="docutils literal"><span class="pre">occ</span></code> is in the <code class="file docutils literal"><span class="pre">nextcloud/</span></code> directory; for example
+<code class="file docutils literal"><span class="pre">/var/www/nextcloud</span></code> on Ubuntu Linux. <code class="docutils literal"><span class="pre">occ</span></code> is a PHP script. <strong>You must
 run it as your HTTP user</strong> to ensure that the correct permissions are maintained
 on your Nextcloud files and directories. In Nextcloud 8.2+ you may run it from
 any directory (specifying the filepath); in previous releases it had to be
-run from the <code class="file docutils literal"><span class="pre">owncloud/</span></code> directory.</p>
+run from the <code class="file docutils literal"><span class="pre">nextcloud/</span></code> directory.</p>
 <div class="section" id="occ-command-directory">
 <h2>occ Command Directory<a class="headerlink" href="#occ-command-directory" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -197,7 +197,7 @@ run from the <code class="file docutils literal"><span class="pre">owncloud/</sp
 <p>If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), <code class="docutils literal"><span class="pre">occ</span></code> should be run with the same version. For
 example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
+<div class="highlight-python"><div class="highlight"><pre>sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/nextcloud/occ
 </pre></div>
 </div>
 <p>Running <code class="docutils literal"><span class="pre">occ</span></code> with no options lists all commands and options, like this
@@ -330,7 +330,7 @@ App is compliant - awesome job!
 </div>
 <p>If your app has issues, you&#8217;ll see output like this:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php occ app:check-code foo_app
-Analysing /var/www/owncloud/apps/files/foo_app.php
+Analysing /var/www/nextcloud/apps/files/foo_app.php
 4 errors
    line   45: OCP\Response - Static method of deprecated class must not be
    called
@@ -343,7 +343,7 @@ Analysing /var/www/owncloud/apps/files/foo_app.php
 </div>
 <p>You can get the full filepath to an app:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php occ app:getpath notifications
-/var/www/owncloud/apps/notifications
+/var/www/nextcloud/apps/notifications
 </pre></div>
 </div>
 </div>
@@ -468,7 +468,7 @@ In order to set (and also get) the value of one key, you can specify multiple
 <code class="docutils literal"><span class="pre">config</span></code> names separated by spaces:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php occ config:system:get trusted_domains
 localhost
-owncloud.local
+nextcloud.local
 sample.tld
 </pre></div>
 </div>
@@ -480,7 +480,7 @@ System config value trusted_domains =&gt; 2 set to string example.com
 
 sudo -u www-data php occ config:system:get trusted_domains
 localhost
-owncloud.local
+nextcloud.local
 example.com
 </pre></div>
 </div>
@@ -785,7 +785,7 @@ and to copy external mount configurations to another Nextcloud server.</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
 </pre></div>
 </div>
-<p>When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See <a class="reference external" href="https://doc.owncloud.org/server/9.0/developer_manual/app/code_signing.html#how-to-get-your-app-signed">Code Signing</a> in the Developer manual for more detailed information.</p>
+<p>When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See <a class="reference external" href="https://docs.nextcloud.org/server/9/developer_manual/app/code_signing.html#how-to-get-your-app-signed">Code Signing</a> in the Developer manual for more detailed information.</p>
 <p><code class="docutils literal"><span class="pre">integrity:sign-core</span></code> is for Nextcloud core developers only.</p>
 <p>See <a class="reference internal" href="../issues/code_signing.html"><em>Code Signing</em></a> to learn more.</p>
 <p>Added in 9.0.</p>
@@ -902,7 +902,7 @@ documented in <a class="reference internal" href="../configuration_user/user_aut
 <p>Run <code class="docutils literal"><span class="pre">log:owncloud</span></code> to see your current logging status:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php occ log:owncloud
 Log backend Nextcloud: enabled
-Log file: /opt/owncloud/data/owncloud.log
+Log file: /opt/nextcloud/data/owncloud.log
 Rotate at: disabled
 </pre></div>
 </div>
@@ -1154,15 +1154,12 @@ Delete versions of   molly
 <p>These commands are available only after you have downloaded and unpacked the
 Nextcloud archive, and taken no further installation steps.</p>
 <p>You can install Nextcloud entirely from the command line. After downloading the
-tarball and copying Nextcloud into the appropriate directories, or
-after installing Nextcloud packages (See
-<a class="reference internal" href="../installation/linux_installation.html"><em>Preferred Linux Installation Method</em></a> and
-<a class="reference internal" href="../installation/source_installation.html"><em>Manual Installation on Linux</em></a>) you can use <code class="docutils literal"><span class="pre">occ</span></code> commands in
+tarball and copying Nextcloud into the appropriate directories (See <a class="reference internal" href="../installation/source_installation.html"><em>Manual Installation on Linux</em></a>) you can use <code class="docutils literal"><span class="pre">occ</span></code> commands in
 place of running the graphical Installation Wizard.</p>
 <p>Apply correct permissions to your Nextcloud directories; see
 <a class="reference internal" href="../installation/installation_wizard.html#strong-perms-label"><span>Setting Strong Directory Permissions</span></a>. Then choose your <code class="docutils literal"><span class="pre">occ</span></code> options. This lists your
 available options:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php /var/www/owncloud/occ
+<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php /var/www/nextcloud/occ
 Nextcloud is not installed - only a limited number of commands are available
 Nextcloud version 9.0.0
 
@@ -1211,7 +1208,7 @@ Options:
  --admin-user             User name of the admin account (default: &quot;admin&quot;)
  --admin-pass             Password of the admin account
  --data-dir               Path to data directory (default:
-                          &quot;/var/www/owncloud/data&quot;)
+                          &quot;/var/www/nextcloud/data&quot;)
  --help (-h)              Display this help message
  --quiet (-q)             Do not output any message
  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal
@@ -1223,9 +1220,9 @@ Options:
 </pre></div>
 </div>
 <p>This example completes the installation:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd /var/www/owncloud/
+<div class="highlight-python"><div class="highlight"><pre>cd /var/www/nextcloud/
 sudo -u www-data php occ maintenance:install --database
-&quot;mysql&quot; --database-name &quot;owncloud&quot;  --database-user &quot;root&quot; --database-pass
+&quot;mysql&quot; --database-name &quot;nextcloud&quot;  --database-user &quot;root&quot; --database-pass
 &quot;password&quot; --admin-user &quot;admin&quot; --admin-pass &quot;password&quot;
 Nextcloud is not installed - only a limited number of commands are available
 Nextcloud was successfully installed

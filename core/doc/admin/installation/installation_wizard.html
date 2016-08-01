@@ -31,7 +31,7 @@
     <link rel="top" title="Nextcloud 9 Server Administration Manual 9 documentation" href="../contents.html" />
     <link rel="up" title="Installation" href="index.html" />
     <link rel="next" title="Installing Nextcloud From the Command Line" href="command_line_installation.html" />
-    <link rel="prev" title="Preferred Linux Installation Method" href="linux_installation.html" />
+    <link rel="prev" title="Nextcloud Deployment Recommendations" href="deployment_recommendations.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -71,7 +71,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Nextcloud Deployment Recommendations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_installation.html">Preferred Linux Installation Method</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Installation Wizard</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-directory-location">Data Directory Location</a></li>
@@ -84,12 +83,10 @@
 <li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported Apps in Nextcloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Manual Installation on Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appliance_installation.html">Nextcloud Community Appliance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_54_installation.html">Installing PHP 5.4 on RHEL 6 and CentOS 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_55_installation.html">Installing PHP 5.5 on RHEL 7 and CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_examples.html">Nginx Example Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_8x.html">Nginx configuration for the Nextcloud 8.x branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_9x.html">Nginx Configuration for the Nextcloud 9.x Branches</a></li>
 </ul>
 </li>
@@ -114,7 +111,7 @@
             
 <ul class="prevnext-title list-unstyled list-inline">
   <li class="prev">
-    <a href="linux_installation.html" title="Previous Chapter: Preferred Linux Installation Method"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Preferred Lin...</span>
+    <a href="deployment_recommendations.html" title="Previous Chapter: Nextcloud Deployment Recommendations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nextcloud Dep...</span>
     </a>
   </li>
   <li class="next">
@@ -132,12 +129,12 @@ the last step to completing the installation is running the Installation
 Wizard.
 This is just three steps:</p>
 <ol class="arabic simple">
-<li>Point your Web browser to <code class="docutils literal"><span class="pre">http://localhost/owncloud</span></code></li>
+<li>Point your Web browser to <code class="docutils literal"><span class="pre">http://localhost/nextcloud</span></code></li>
 <li>Enter your desired administrator&#8217;s username and password.</li>
 <li>Click <strong>Finish Setup</strong>.</li>
 </ol>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/install-wizard-a.png"><img alt="screenshot of the installation wizard" src="../_images/install-wizard-a.png" style="width: 250.5px; height: 350.25px;" /></a>
+<a class="reference internal image-reference" href="../_images/install-wizard-a.png"><img alt="screenshot of the installation wizard" src="../_images/install-wizard-a.png" style="width: 374.25px; height: 531.75px;" /></a>
 </div>
 <p>You&#8217;re finished and can start using your new Nextcloud server.</p>
 <p>Of course, there is much more that you can do to set up your Nextcloud server for
@@ -157,14 +154,14 @@ to use the <a class="reference internal" href="../configuration_server/occ_comma
 <p>Click <strong>Storage and Database</strong> to expose additional installation configuration
 options for your Nextcloud data directory and database.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/install-wizard-a1.png"><img alt="installation wizard with all options exposed" src="../_images/install-wizard-a1.png" style="width: 280.5px; height: 418.5px;" /></a>
+<a class="reference internal image-reference" href="../_images/install-wizard-a1.png"><img alt="installation wizard with all options exposed" src="../_images/install-wizard-a1.png" style="width: 241.5px; height: 394.5px;" /></a>
 </div>
 <p>You should locate your Nextcloud data directory outside of your Web root if you
 are using an HTTP server other than Apache, or you may wish to store your
 Nextcloud data in a different location for other reasons (e.g. on a storage
 server). It is best to configure your data directory location at installation,
 as it is difficult to move after installation. You may put it anywhere; in this
-example is it located in <code class="docutils literal"><span class="pre">/var/oc_data</span></code>. This directory must already exist,
+example is it located in <code class="docutils literal"><span class="pre">/opt/nextcloud</span></code>. This directory must already exist,
 and must be owned by your HTTP user (see
 <a class="reference internal" href="#strong-perms-label"><span>Setting Strong Directory Permissions</span></a>).</p>
 </div>
@@ -184,7 +181,7 @@ for your Nextcloud database.</p>
 <p>After you enter your root or administrator login for your database, the
 installer creates a special database user with privileges limited to the
 Nextcloud database. Then Nextcloud needs only the special Nextcloud database
-user, and drops the root dB login. This user is named for your Nextcloud admin
+user, and drops the root DB login. This user is named for your Nextcloud admin
 user, with an <code class="docutils literal"><span class="pre">oc_</span></code> prefix, and then given a random password. The Nextcloud
 database user and password are written into <code class="docutils literal"><span class="pre">config.php</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;dbuser&#39; =&gt; &#39;oc_molly&#39;,
@@ -193,7 +190,7 @@ database user and password are written into <code class="docutils literal"><span
 </div>
 <p>Click Finish Setup, and start using your new Nextcloud server.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/install-wizard-a2.png"><img alt="Nextcloud welcome screen after a successful installation" src="../_images/install-wizard-a2.png" style="width: 481.5px; height: 356.25px;" /></a>
+<a class="reference internal image-reference" href="../_images/install-wizard-a2.png"><img alt="Nextcloud welcome screen after a successful installation" src="../_images/install-wizard-a2.png" style="width: 729.75px; height: 459.0px;" /></a>
 </div>
 <p>Now we will look at some important post-installation steps.</p>
 </div>
@@ -218,17 +215,17 @@ that a load balancer is in place there will be no issues as long as it sends
 the correct X-Forwarded-Host header. When a user tries a URL that
 is not whitelisted the following error appears:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/install-wizard-a4.png"><img alt="Error message when URL is not whitelisted" src="../_images/install-wizard-a4.png" style="width: 544.5px; height: 273.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/install-wizard-a4.png"><img alt="Error message when URL is not whitelisted" src="../_images/install-wizard-a4.png" style="width: 727.5px; height: 453.75px;" /></a>
 </div>
 </div>
 <div class="section" id="setting-strong-directory-permissions">
 <span id="strong-perms-label"></span><h2>Setting Strong Directory Permissions<a class="headerlink" href="#setting-strong-directory-permissions" title="Permalink to this headline">¶</a></h2>
 <p>For hardened security we recommend setting the permissions on your Nextcloud
-directories as strictly as possible, and for proper server operations. This
-should be done immediately after the initial installation and before running the
-setup. Your HTTP user must own the <code class="docutils literal"><span class="pre">config/</span></code>, <code class="docutils literal"><span class="pre">data/</span></code> and <code class="docutils literal"><span class="pre">apps/</span></code> directories
-so that you can configure Nextcloud, create, modify and delete your data files,
-and install apps via the Nextcloud Web interface.</p>
+directories as strictly as possible. This should be done immediately after the
+initial installation and before running the setup. Your HTTP user must own the
+<code class="docutils literal"><span class="pre">config/</span></code>, <code class="docutils literal"><span class="pre">data/</span></code> and <code class="docutils literal"><span class="pre">apps/</span></code> directories so that you can configure
+Nextcloud, create, modify and delete your data files, and install apps via the
+Nextcloud Web interface.</p>
 <p>You can find your HTTP user in your HTTP server configuration files. Or you can
 use <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span>PHP Version and Information</span></a> (Look for the <strong>User/Group</strong> line).</p>
 <ul class="simple">
@@ -246,44 +243,44 @@ ownership as above could result in some issues if the NFS mount is
 lost.</p>
 </div>
 <p>The easy way to set the correct permissions is to copy and run this script.
-Replace the <code class="docutils literal"><span class="pre">ocpath</span></code> variable with the path to your Nextcloud directory, and
+Replace the <code class="docutils literal"><span class="pre">ncpath</span></code> variable with the path to your Nextcloud directory, and
 replace the <code class="docutils literal"><span class="pre">htuser</span></code> and <code class="docutils literal"><span class="pre">htgroup</span></code> variables with your HTTP user and group:</p>
 <div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
-ocpath=&#39;/var/www/owncloud&#39;
+ncpath=&#39;/var/www/nextcloud&#39;
 htuser=&#39;www-data&#39;
 htgroup=&#39;www-data&#39;
 rootuser=&#39;root&#39;
 
 printf &quot;Creating possible missing Directories\n&quot;
-mkdir -p $ocpath/data
-mkdir -p $ocpath/assets
-mkdir -p $ocpath/updater
+mkdir -p $ncpath/data
+mkdir -p $ncpath/assets
+mkdir -p $ncpath/updater
 
 printf &quot;chmod Files and Directories\n&quot;
-find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
-find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
+find ${ncpath} -type f -print0 | xargs -0 chmod 0640
+find ${ncpath} -type d -print0 | xargs -0 chmod 0750
 
 printf &quot;chown Directories\n&quot;
-chown -R ${rootuser}:${htgroup} ${ocpath}/
-chown -R ${htuser}:${htgroup} ${ocpath}/apps/
-chown -R ${htuser}:${htgroup} ${ocpath}/assets/
-chown -R ${htuser}:${htgroup} ${ocpath}/config/
-chown -R ${htuser}:${htgroup} ${ocpath}/data/
-chown -R ${htuser}:${htgroup} ${ocpath}/themes/
-chown -R ${htuser}:${htgroup} ${ocpath}/updater/
+chown -R ${rootuser}:${htgroup} ${ncpath}
+chown -R ${htuser}:${htgroup} ${ncpath}/apps/
+chown -R ${htuser}:${htgroup} ${ncpath}/assets/
+chown -R ${htuser}:${htgroup} ${ncpath}/config/
+chown -R ${htuser}:${htgroup} ${ncpath}/data/
+chown -R ${htuser}:${htgroup} ${ncpath}/themes/
+chown -R ${htuser}:${htgroup} ${ncpath}/updater/
 
-chmod +x ${ocpath}/occ
+chmod +x ${ncpath}/occ
 
 printf &quot;chmod/chown .htaccess\n&quot;
-if [ -f ${ocpath}/.htaccess ]
+if [ -f ${ncpath}/.htaccess ]
  then
-  chmod 0644 ${ocpath}/.htaccess
-  chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
+  chmod 0644 ${ncpath}/.htaccess
+  chown ${rootuser}:${htgroup} ${ncpath}/.htaccess
 fi
-if [ -f ${ocpath}/data/.htaccess ]
+if [ -f ${ncpath}/data/.htaccess ]
  then
-  chmod 0644 ${ocpath}/data/.htaccess
-  chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+  chmod 0644 ${ncpath}/data/.htaccess
+  chown ${rootuser}:${htgroup} ${ncpath}/data/.htaccess
 fi
 </pre></div>
 </div>
@@ -302,7 +299,7 @@ the group owner</li>
 <li>The <code class="file docutils literal"><span class="pre">themes/</span></code> directory should be owned by <code class="docutils literal"><span class="pre">[HTTP</span> <span class="pre">user]:[HTTP</span> <span class="pre">group]</span></code></li>
 <li>The <code class="file docutils literal"><span class="pre">assets/</span></code> directory should be owned by <code class="docutils literal"><span class="pre">[HTTP</span> <span class="pre">user]:[HTTP</span> <span class="pre">group]</span></code></li>
 <li>The <code class="file docutils literal"><span class="pre">data/</span></code> directory should be owned by <code class="docutils literal"><span class="pre">[HTTP</span> <span class="pre">user]:[HTTP</span> <span class="pre">group]</span></code></li>
-<li>The <code class="file docutils literal"><span class="pre">[ocpath]/.htaccess</span></code> file should be owned by <code class="docutils literal"><span class="pre">root:[HTTP</span> <span class="pre">group]</span></code></li>
+<li>The <code class="file docutils literal"><span class="pre">[ncpath]/.htaccess</span></code> file should be owned by <code class="docutils literal"><span class="pre">root:[HTTP</span> <span class="pre">group]</span></code></li>
 <li>The <code class="file docutils literal"><span class="pre">data/.htaccess</span></code> file should be owned by <code class="docutils literal"><span class="pre">root:[HTTP</span> <span class="pre">group]</span></code></li>
 <li>Both <code class="file docutils literal"><span class="pre">.htaccess</span></code> files are read-write file owner, read-only group and
 world</li>
@@ -317,7 +314,7 @@ permissions to allow upgrading.</p>
             
 <ul class="prevnext-title list-unstyled list-inline">
   <li class="prev">
-    <a href="linux_installation.html" title="Previous Chapter: Preferred Linux Installation Method"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Preferred Lin...</span>
+    <a href="deployment_recommendations.html" title="Previous Chapter: Nextcloud Deployment Recommendations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nextcloud Dep...</span>
     </a>
   </li>
   <li class="next">

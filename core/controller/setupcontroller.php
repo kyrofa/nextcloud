@@ -39,12 +39,7 @@ class SetupController {
 	 * @param Setup $setupHelper
 	 */
 	function __construct(Setup $setupHelper) {
-		$config_directory = getenv('NEXTCLOUD_CONFIG_DIR');
-		if ($config_directory) {
-			$this->autoConfigFile = $config_directory.'/autoconfig.php';
-		} else {
-			$this->autoConfigFile = \OC::$SERVERROOT.'/config/autoconfig.php';
-		}
+		$this->autoConfigFile = \OC::$SERVERROOT.'/config/autoconfig.php';
 		$this->setupHelper = $setupHelper;
 	}
 
@@ -110,7 +105,7 @@ class SetupController {
 
 	public function loadAutoConfig($post) {
 		if( file_exists($this->autoConfigFile)) {
-			\OCP\Util::writeLog('core', 'Autoconfig file found, setting up ownCloud…', \OCP\Util::INFO);
+			\OCP\Util::writeLog('core', 'Autoconfig file found, setting up Nextcloud…', \OCP\Util::INFO);
 			$AUTOCONFIG = array();
 			include $this->autoConfigFile;
 			$post = array_merge ($post, $AUTOCONFIG);

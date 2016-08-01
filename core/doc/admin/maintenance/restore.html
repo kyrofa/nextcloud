@@ -134,12 +134,12 @@ complete restoration unless you have both of these.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This guide assumes that your previous backup is called
-&#8220;owncloud-dirbkp&#8221;</p>
+&#8220;nextcloud-dirbkp&#8221;</p>
 </div>
 <p>Simply copy your configuration and data folder (or even your whole Nextcloud
 install and
 data folder) to your Nextcloud environment. You could use this command:</p>
-<div class="highlight-python"><div class="highlight"><pre>rsync -Aax owncloud-dirbkp/ owncloud/
+<div class="highlight-python"><div class="highlight"><pre>rsync -Aax nextcloud-dirbkp/ nextcloud/
 </pre></div>
 </div>
 </div>
@@ -148,26 +148,26 @@ data folder) to your Nextcloud environment. You could use this command:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This guide assumes that your previous backup is called
-&#8220;owncloud-sqlbkp.bak&#8221;</p>
+&#8220;nextcloud-sqlbkp.bak&#8221;</p>
 </div>
 <div class="section" id="mysql">
 <h3>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h3>
 <p>MySQL is the recommended database engine. To restore MySQL:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">db_name</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">owncloud</span><span class="o">-</span><span class="n">sqlbkp</span><span class="o">.</span><span class="n">bak</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="p">[</span><span class="n">server</span><span class="p">]</span> <span class="o">-</span><span class="n">u</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">password</span><span class="p">]</span> <span class="p">[</span><span class="n">db_name</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">sqlbkp</span><span class="o">.</span><span class="n">bak</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sqlite">
 <h3>SQLite<a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>rm data/owncloud.db
-sqlite3 data/owncloud.db &lt; owncloud-sqlbkp.bak
+<div class="highlight-python"><div class="highlight"><pre>rm data/nextcloud.db
+sqlite3 data/nextcloud.db &lt; nextcloud-sqlbkp.bak
 </pre></div>
 </div>
 </div>
 <div class="section" id="postgresql">
 <h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>PGPASSWORD=&quot;password&quot; pg_restore -c -d owncloud -h [server] -U [username]
-owncloud-sqlbkp.bak
+<div class="highlight-python"><div class="highlight"><pre>PGPASSWORD=&quot;password&quot; pg_restore -c -d nextcloud -h [server] -U [username]
+nextcloud-sqlbkp.bak
 </pre></div>
 </div>
 </div>

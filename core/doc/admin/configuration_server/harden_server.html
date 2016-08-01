@@ -209,8 +209,8 @@ documentation for your HTTP server. The following examples are for Apache.</p>
 permanent redirect using the 301 status code. When using Apache this can be
 achieved by a setting such as the following in the Apache VirtualHosts config:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;VirtualHost *:80&gt;
-   ServerName cloud.owncloud.com
-   Redirect permanent / https://cloud.owncloud.com/
+   ServerName cloud.nextcloud.com
+   Redirect permanent / https://cloud.nextcloud.com/
 &lt;/VirtualHost&gt;
 </pre></div>
 </div>
@@ -225,7 +225,7 @@ visitors from bypassing invalid certificate warnings.</p>
 <p>This can be achieved by setting the following settings within the Apache
 VirtualHost file:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;VirtualHost *:443&gt;
-  ServerName cloud.owncloud.com
+  ServerName cloud.nextcloud.com
     &lt;IfModule mod_headers.c&gt;
       Header always set Strict-Transport-Security &quot;max-age=15768000; includeSubDomains; preload&quot;
     &lt;/IfModule&gt;

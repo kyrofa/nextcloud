@@ -126,9 +126,19 @@
 						
   <div class="section" id="defining-background-jobs">
 <h1>Defining Background Jobs<a class="headerlink" href="#defining-background-jobs" title="Permalink to this headline">¶</a></h1>
-<p>A system like Nextcloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering Nextcloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which are executed without any need for user interaction.</p>
-<p>These jobs are typically referred to as <em>cron jobs</em>.  Cron jobs are commands or shell-based scripts that are scheduled to run periodically at fixed times, dates, or intervals.   <code class="docutils literal"><span class="pre">cron.php</span></code> is an Nextcloud internal process that runs such background jobs on demand.</p>
-<p>Nextcloud plug-in applications register actions with <code class="docutils literal"><span class="pre">cron.php</span></code> automatically to take care of typical housekeeping operations, such as garbage collecting of temporary files or checking for newly updated files using <code class="docutils literal"><span class="pre">filescan()</span></code> for externally mounted file systems.</p>
+<p>A system like Nextcloud sometimes requires tasks to be done on a regular basis
+without the need for user interaction or hindering Nextcloud performance. For
+that purpose, as a system administrator, you can define background jobs (for
+example, database clean-ups) which are executed without any need for user
+interaction.</p>
+<p>These jobs are typically referred to as <em>cron jobs</em>.  Cron jobs are commands or
+shell-based scripts that are scheduled to run periodically at fixed times,
+dates, or intervals.   <code class="docutils literal"><span class="pre">cron.php</span></code> is an Nextcloud internal process that runs
+such background jobs on demand.</p>
+<p>Nextcloud plug-in applications register actions with <code class="docutils literal"><span class="pre">cron.php</span></code> automatically
+to take care of typical housekeeping operations, such as garbage collecting of
+temporary files or checking for newly updated files using <code class="docutils literal"><span class="pre">filescan()</span></code> for
+externally mounted file systems.</p>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>In the admin settings menu you can configure how cron-jobs should be executed.
@@ -141,10 +151,17 @@ You can choose between the following options:</p>
 </div>
 <div class="section" id="cron-jobs">
 <h2>Cron Jobs<a class="headerlink" href="#cron-jobs" title="Permalink to this headline">¶</a></h2>
-<p>You can schedule cron jobs in three ways &#8211; using AJAX, Webcron, or cron. The default method is to use AJAX.  However, the recommended method is to use cron.  The following sections describe the differences between each method.</p>
+<p>You can schedule cron jobs in three ways &#8211; using AJAX, Webcron, or cron. The
+default method is to use AJAX.  However, the recommended method is to use cron.
+The following sections describe the differences between each method.</p>
 <div class="section" id="ajax">
 <h3>AJAX<a class="headerlink" href="#ajax" title="Permalink to this headline">¶</a></h3>
-<p>The AJAX scheduling method is the default option.  Unfortunately, however, it is also the least reliable. Each time a user visits the Nextcloud page, a single background job is executed. The advantage of this mechanism is that it does not require access to the system nor registration with a third party service. The disadvantage of this mechanism, when compared to the Webcron service, is that it requires regular visits to the page for it to be triggered.</p>
+<p>The AJAX scheduling method is the default option.  Unfortunately, however, it is
+also the least reliable. Each time a user visits the Nextcloud page, a single
+background job is executed. The advantage of this mechanism is that it does not
+require access to the system nor registration with a third party service. The
+disadvantage of this mechanism, when compared to the Webcron service, is that it
+requires regular visits to the page for it to be triggered.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Especially when using the Activity App or external storages, where new
@@ -156,28 +173,33 @@ preferred.</p>
 <h3>Webcron<a class="headerlink" href="#webcron" title="Permalink to this headline">¶</a></h3>
 <p>By registering your Nextcloud <code class="docutils literal"><span class="pre">cron.php</span></code> script address at an external webcron
 service (for example, <a class="reference external" href="http://www.easycron.com/">easyCron</a>), you ensure that background jobs are executed
-regularly. To use this type of service, your server you must be able to access
-your server using the Internet. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>URL to call: http[s]://&lt;domain-of-your-server&gt;/owncloud/cron.php
+regularly. To use this type of service with your server, you must be able to
+access your server using the Internet. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>URL to call: http[s]://&lt;domain-of-your-server&gt;/nextcloud/cron.php
 </pre></div>
 </div>
 </div>
 <div class="section" id="cron">
 <h3>Cron<a class="headerlink" href="#cron" title="Permalink to this headline">¶</a></h3>
-<p>Using the operating system cron feature is the preferred method for executing regular tasks.  This method enables the execution of scheduled jobs without the inherent limitations the Web server might have.</p>
-<p>To run a cron job on a *nix system, every 15 minutes, under the default Web server user (often, <code class="docutils literal"><span class="pre">www-data</span></code> or <code class="docutils literal"><span class="pre">wwwrun</span></code>), you must set up the following cron job to call the <strong>cron.php</strong> script:</p>
+<p>Using the operating system cron feature is the preferred method for executing
+regular tasks.  This method enables the execution of scheduled jobs without the
+inherent limitations the Web server might have.</p>
+<p>To run a cron job on a *nix system, every 15 minutes, under the default Web
+server user (often, <code class="docutils literal"><span class="pre">www-data</span></code> or <code class="docutils literal"><span class="pre">wwwrun</span></code>), you must set up the following
+cron job to call the <strong>cron.php</strong> script:</p>
 <div class="highlight-python"><div class="highlight"><pre># crontab -u www-data -e
-*/15  *  *  *  * php -f /var/www/owncloud/cron.php
+*/15  *  *  *  * php -f /var/www/nextcloud/cron.php
 </pre></div>
 </div>
 <p>You can verify if the cron job has been added and scheduled by executing:</p>
 <div class="highlight-python"><div class="highlight"><pre># crontab -u www-data -l
-*/15  *  *  *  * php -f /var/www/owncloud/cron.php
+*/15  *  *  *  * php -f /var/www/nextcloud/cron.php
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You have to replace the path <code class="docutils literal"><span class="pre">/var/www/owncloud/cron.php</span></code> with the path to your current Nextcloud installation.</p>
+<p class="last">You have to replace the path <code class="docutils literal"><span class="pre">/var/www/nextcloud/cron.php</span></code> with the
+path to your current Nextcloud installation.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

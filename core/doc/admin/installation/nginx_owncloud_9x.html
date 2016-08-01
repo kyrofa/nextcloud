@@ -31,7 +31,7 @@
     <link rel="top" title="Nextcloud 9 Server Administration Manual 9 documentation" href="../contents.html" />
     <link rel="up" title="Installation" href="index.html" />
     <link rel="next" title="Nextcloud Server Configuration" href="../configuration_server/index.html" />
-    <link rel="prev" title="Nginx configuration for the Nextcloud 8.x branches" href="nginx_owncloud_8x.html" />
+    <link rel="prev" title="Nginx Example Configurations" href="nginx_examples.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -71,18 +71,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Nextcloud Deployment Recommendations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_installation.html">Preferred Linux Installation Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation Wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing Nextcloud From the Command Line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported Apps in Nextcloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source_installation.html">Manual Installation on Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appliance_installation.html">Nextcloud Community Appliance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_54_installation.html">Installing PHP 5.4 on RHEL 6 and CentOS 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_55_installation.html">Installing PHP 5.5 on RHEL 7 and CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_examples.html">Nginx Example Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_8x.html">Nginx configuration for the Nextcloud 8.x branches</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Nginx Configuration for the Nextcloud 9.x Branches</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-nginx">Nextcloud in the webroot of nginx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-a-subdir-of-nginx">Nextcloud in a subdir of nginx</a></li>
@@ -111,7 +108,7 @@
             
 <ul class="prevnext-title list-unstyled list-inline">
   <li class="prev">
-    <a href="nginx_owncloud_8x.html" title="Previous Chapter: Nginx configuration for the Nextcloud 8.x branches"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nginx configu...</span>
+    <a href="nginx_examples.html" title="Previous Chapter: Nginx Example Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nginx Example...</span>
     </a>
   </li>
   <li class="next">
@@ -165,7 +162,7 @@ server {
     add_header X-Permitted-Cross-Domain-Policies none;
 
     # Path to the root of your installation
-    root /var/www/owncloud/;
+    root /var/www/nextcloud/;
 
     location = /robots.txt {
         allow all;
@@ -179,10 +176,12 @@ server {
     #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json
     # last;
 
-    location = /.well-known/carddav { return 301
-     $scheme://$host/remote.php/dav; }
-    location = /.well-known/caldav { return 301
-     $scheme://$host/remote.php/dav; }
+    location = /.well-known/carddav {
+      return 301 $scheme://$host/remote.php/dav;
+    }
+    location = /.well-known/caldav {
+      return 301 $scheme://$host/remote.php/dav;
+    }
 
     location /.well-known/acme-challenge { }
 
@@ -211,9 +210,7 @@ server {
         deny all;
     }
 
-    location ~
-    ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater
-    /.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+    location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
         include fastcgi_params;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -308,19 +305,21 @@ server {
 
     # The following 2 rules are only needed for the user_webfinger app.
     # Uncomment it if you&#39;re planning to use this app.
-    # rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta
+    # rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta
     # last;
     #rewrite ^/.well-known/host-meta.json
-    # /owncloud/public.php?service=host-meta-json last;
+    # /nextcloud/public.php?service=host-meta-json last;
 
-    location = /.well-known/carddav { return 301
-      $scheme://$host/owncloud/remote.php/dav; }
-    location = /.well-known/caldav { return 301
-      $scheme://$host/owncloud/remote.php/dav; }
+    location = /.well-known/carddav {
+      return 301 $scheme://$host/nextcloud/remote.php/dav;
+    }
+    location = /.well-known/caldav {
+      return 301 $scheme://$host/nextcloud/remote.php/dav;
+    }
 
     location /.well-known/acme-challenge { }
 
-    location ^~ /owncloud {
+    location ^~ /nextcloud {
 
         # set max upload size
         client_max_body_size 512M;
@@ -333,24 +332,22 @@ server {
         # This module is currently not supported.
         #pagespeed off;
 
-        error_page 403 /owncloud/core/templates/403.php;
-        error_page 404 /owncloud/core/templates/404.php;
+        error_page 403 /nextcloud/core/templates/403.php;
+        error_page 404 /nextcloud/core/templates/404.php;
 
-        location /owncloud {
-            rewrite ^ /owncloud/index.php$uri;
+        location /nextcloud {
+            rewrite ^ /nextcloud/index.php$uri;
         }
 
         location ~
-        ^/owncloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+        ^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
             deny all;
         }
-        location ~ ^/owncloud/(?:\.|autotest|occ|issue|indie|db_|console) {
+        location ~ ^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console) {
             deny all;
         }
 
-        location ~
-     ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|
-     updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+        location ~ ^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
             include fastcgi_params;
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -364,7 +361,7 @@ server {
             fastcgi_request_buffering off;
         }
 
-        location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
+        location ~ ^/nextcloud/(?:updater|ocs-provider)(?:$|/) {
             try_files $uri/ =404;
             index index.php;
         }
@@ -372,7 +369,7 @@ server {
         # Adding the cache control header for js and css files
         # Make sure it is BELOW the PHP block
         location ~* \.(?:css|js)$ {
-            try_files $uri /owncloud/index.php$uri$is_args$args;
+            try_files $uri /nextcloud/index.php$uri$is_args$args;
             add_header Cache-Control &quot;public, max-age=7200&quot;;
             # Add headers to serve security related headers  (It is intended
             # to have those duplicated to the ones above)
@@ -391,7 +388,7 @@ server {
         }
 
         location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
-            try_files $uri /owncloud/index.php$uri$is_args$args;
+            try_files $uri /nextcloud/index.php$uri$is_args$args;
             # Optional: Don&#39;t log access to other assets
             access_log off;
         }
@@ -406,7 +403,7 @@ server {
             
 <ul class="prevnext-title list-unstyled list-inline">
   <li class="prev">
-    <a href="nginx_owncloud_8x.html" title="Previous Chapter: Nginx configuration for the Nextcloud 8.x branches"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nginx configu...</span>
+    <a href="nginx_examples.html" title="Previous Chapter: Nginx Example Configurations"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Nginx Example...</span>
     </a>
   </li>
   <li class="next">

@@ -125,7 +125,7 @@
 <h2>Backup Folders<a class="headerlink" href="#backup-folders" title="Permalink to this headline">¶</a></h2>
 <p>Simply copy your config and data folder (or even your whole Nextcloud install and data folder) to a place outside of
 your Nextcloud environment. You could use this command:</p>
-<div class="highlight-python"><div class="highlight"><pre>rsync -Aax owncloud/ owncloud-dirbkp_`date +&quot;%Y%m%d&quot;`/
+<div class="highlight-python"><div class="highlight"><pre>rsync -Aax nextcloud/ nextcloud-dirbkp_`date +&quot;%Y%m%d&quot;`/
 </pre></div>
 </div>
 </div>
@@ -135,19 +135,19 @@ your Nextcloud environment. You could use this command:</p>
 <h3>MySQL/MariaDB<a class="headerlink" href="#mysql-mariadb" title="Permalink to this headline">¶</a></h3>
 <p>MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
 database engine. To backup MySQL/MariaDB:</p>
-<div class="highlight-python"><div class="highlight"><pre>mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] &gt; owncloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-python"><div class="highlight"><pre>mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
 </pre></div>
 </div>
 </div>
 <div class="section" id="sqlite">
 <h3>SQLite<a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>sqlite3 data/owncloud.db .dump &gt; owncloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-python"><div class="highlight"><pre>sqlite3 data/nextcloud.db .dump &gt; nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
 </pre></div>
 </div>
 </div>
 <div class="section" id="postgresql">
 <h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>PGPASSWORD=&quot;password&quot; pg_dump [db_name] -h [server] -U [username] -f owncloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
+<div class="highlight-python"><div class="highlight"><pre>PGPASSWORD=&quot;password&quot; pg_dump [db_name] -h [server] -U [username] -f nextcloud-sqlbkp_`date +&quot;%Y%m%d&quot;`.bak
 </pre></div>
 </div>
 </div>

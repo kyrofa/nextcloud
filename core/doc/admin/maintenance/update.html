@@ -125,10 +125,6 @@ and data, and it automates updating
 <p class="first admonition-title">Note</p>
 <p>The Updater app is <strong>not enabled and not supported</strong> in Nextcloud
 Enterprise edition.</p>
-<p>The Updater app is <strong>not included</strong> in the
-<a class="reference external" href="https://download.owncloud.org/download/repositories/stable/owncloud/">Linux packages on our Open Build Service</a>,
-but only in the <a class="reference external" href="https://owncloud.org/install/#instructions-server">tar and zip archives</a>. When you install
-Nextcloud from packages you should keep it updated with your package manager.</p>
 <p class="last"><strong>Downgrading</strong> is not supported and risks corrupting your data! If you want
 to revert to an older Nextcloud version, install it from scratch and then
 restore your data from backup. Before doing this, file a support ticket (if
@@ -175,7 +171,7 @@ downloading the new Nextcloud archive succeeded you will see the following
 screen. Click the Start Update button to complete your update:</li>
 </ol>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/upgrade-2.png"><img alt="Nextcloud upgrade wizard screen." src="../_images/upgrade-2.png" style="width: 252.75px; height: 273.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/upgrade-2.png"><img alt="Nextcloud upgrade wizard screen." src="../_images/upgrade-2.png" style="width: 326.25px; height: 420.75px;" /></a>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -217,17 +213,17 @@ immediately after the initial installation. Please follow the steps in
 <a class="reference internal" href="../installation/installation_wizard.html#strong-perms-label"><span>Setting Strong Directory Permissions</span></a>.</p>
 <p>These strict permissions will prevent the Updater app from working, as it needs
 your whole Nextcloud directory to be owned by the HTTP user. Run this script to
-set the appropriate permissions for updating. Replace the <code class="docutils literal"><span class="pre">ocpath</span></code> variable
+set the appropriate permissions for updating. Replace the <code class="docutils literal"><span class="pre">ncpath</span></code> variable
 with the path to your Nextcloud directory, and replace the <code class="docutils literal"><span class="pre">htuser</span></code> and
 <code class="docutils literal"><span class="pre">htgroup</span></code> variables with your HTTP user and group.:</p>
 <div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
-# Sets permissions of the owncloud instance for updating
+# Sets permissions of the Nextcloud instance for updating
 
-ocpath=&#39;/var/www/owncloud&#39;
+ncpath=&#39;/var/www/nextcloud&#39;
 htuser=&#39;www-data&#39;
 htgroup=&#39;www-data&#39;
 
-chown -R ${htuser}:${htgroup} ${ocpath}
+chown -R ${htuser}:${htgroup} ${ncpath}
 </pre></div>
 </div>
 <p>You can find your HTTP user in your HTTP server configuration files. Or you can
@@ -259,7 +255,7 @@ command:</p>
 </pre></div>
 </div>
 <p>When you run it without options it runs a system check:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php owncloud/updater/application.php
+<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php nextcloud/updater/application.php
 Nextcloud updater 1.0 - CLI based Nextcloud server upgrades
 Checking system health.
 - file permissions are ok.
@@ -278,13 +274,13 @@ Created checkpoint 9.0.0.12-56d5e4e004964
 </pre></div>
 </div>
 <p>Restore an earlier checkpoint:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php owncloud/updater/application.php upgrade:checkpoint
+<div class="highlight-python"><div class="highlight"><pre>sudo -u www-data php nextcloud/updater/application.php upgrade:checkpoint
  --restore=9.0.0.12-56d5e4e004964
 </pre></div>
 </div>
 <p>Add a line like this to your crontab to automatically create daily
 checkpoints:</p>
-<div class="highlight-python"><div class="highlight"><pre>2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php
+<div class="highlight-python"><div class="highlight"><pre>2 15 * * * sudo -u www-data php /path/to/nextcloud/updater/application.php
 upgrade:checkpoint --create &gt; /dev/null 2&gt;&amp;1
 </pre></div>
 </div>

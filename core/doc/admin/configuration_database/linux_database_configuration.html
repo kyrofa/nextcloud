@@ -193,8 +193,8 @@ when you login for the first time.</p>
 </div>
 <p>Then a <strong>mysql&gt;</strong> or <strong>MariaDB [root]&gt;</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
 <div class="highlight-python"><div class="highlight"><pre>CREATE USER &#39;username&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
-CREATE DATABASE IF NOT EXISTS owncloud;
-GRANT ALL PRIVILEGES ON owncloud.* TO &#39;username&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
+CREATE DATABASE IF NOT EXISTS nextcloud;
+GRANT ALL PRIVILEGES ON nextcloud.* TO &#39;username&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -209,7 +209,7 @@ this:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;?php
 
   &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
   &quot;dbuser&quot;        =&gt; &quot;username&quot;,
   &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
   &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
@@ -242,7 +242,7 @@ To start the postgres command line mode use:</p>
 </div>
 <p>Then a <strong>template1=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
 <div class="highlight-python"><div class="highlight"><pre>CREATE USER username CREATEDB;
-CREATE DATABASE owncloud OWNER username;
+CREATE DATABASE nextcloud OWNER username;
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -257,7 +257,7 @@ this:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;?php
 
   &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
   &quot;dbuser&quot;        =&gt; &quot;username&quot;,
   &quot;dbpassword&quot;    =&gt; &quot;&quot;,
   &quot;dbhost&quot;        =&gt; &quot;/var/run/postgresql&quot;,
@@ -278,9 +278,9 @@ Nextcloud when you login for the first time.</p>
 </div>
 <p>Then a <strong>postgres=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
 <div class="highlight-python"><div class="highlight"><pre>CREATE USER username WITH PASSWORD &#39;password&#39;;
-CREATE DATABASE owncloud TEMPLATE template0 ENCODING &#39;UNICODE&#39;;
-ALTER DATABASE owncloud OWNER TO username;
-GRANT ALL PRIVILEGES ON DATABASE owncloud TO username;
+CREATE DATABASE nextcloud TEMPLATE template0 ENCODING &#39;UNICODE&#39;;
+ALTER DATABASE nextcloud OWNER TO username;
+GRANT ALL PRIVILEGES ON DATABASE nextcloud TO username;
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -295,7 +295,7 @@ this:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;?php
 
   &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
-  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
   &quot;dbuser&quot;        =&gt; &quot;username&quot;,
   &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
   &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
@@ -350,12 +350,12 @@ mysql&gt; quit
 <p><strong>PostgreSQL</strong>:</p>
 <p>Assuming the database server is installed on the same system you&#8217;re running
 the command from, use:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">downcloud</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">dnextcloud</span>
 </pre></div>
 </div>
 <p>To acess a MySQL installation on a different machine, add the -h option with
 the respective host name:</p>
-<div class="highlight-python"><div class="highlight"><pre>psql -Uusername -downcloud -h HOSTNAME
+<div class="highlight-python"><div class="highlight"><pre>psql -Uusername -dnextcloud -h HOSTNAME
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>postgres=# SELECT version();
@@ -378,8 +378,8 @@ PostgreSQL: \l
 </pre></div>
 </div>
 <p><strong>Show Nextcloud Tables in Database</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>MySQL     : USE owncloud; SHOW TABLES;
-PostgreSQL: \c owncloud; \d
+<div class="highlight-python"><div class="highlight"><pre>MySQL     : USE nextcloud; SHOW TABLES;
+PostgreSQL: \c nextcloud; \d
 </pre></div>
 </div>
 <p><strong>Quit Database</strong>:</p>

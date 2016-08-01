@@ -86,7 +86,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#file-versions">File versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nextcloud-verifications">Nextcloud Verifications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#alternate-code-locations">Alternate Code Locations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apps">Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#previews">Previews</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ldap">LDAP</a></li>
@@ -193,12 +192,11 @@ never use it.</p>
 <p>Your list of trusted domains that users can log into. Specifying trusted
 domains prevents host header poisoning. Do not remove this, as it performs
 necessary security checks.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;datadirectory&#39; =&gt; &#39;/var/www/owncloud/data&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;datadirectory&#39; =&gt; &#39;/var/www/nextcloud/data&#39;,
 </pre></div>
 </div>
 <p>Where user files are stored; this defaults to <code class="docutils literal"><span class="pre">data/</span></code> in the Nextcloud
 directory. The SQLite database is also stored here, when you use SQLite.</p>
-<p>(SQLite is not available in Nextcloud Enterprise Edition)</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;version&#39; =&gt; &#39;&#39;,
 </pre></div>
 </div>
@@ -212,10 +210,10 @@ during installation and update, so you shouldn&#8217;t need to change it.</p>
 <dl class="docutils">
 <dt>Available:</dt>
 <dd><ul class="first last simple">
-<li>sqlite (SQLite3 - Not in Enterprise Edition)</li>
+<li>sqlite (SQLite3)</li>
 <li>mysql (MySQL/MariaDB)</li>
 <li>pgsql (PostgreSQL)</li>
-<li>oci (Oracle - Enterprise Edition Only)</li>
+<li>oci (Oracle)</li>
 </ul>
 </dd>
 </dl>
@@ -226,7 +224,7 @@ during installation and update, so you shouldn&#8217;t need to change it.</p>
 <code class="docutils literal"><span class="pre">hostname.example.com</span></code>, or the IP address. To specify a port use
 <code class="docutils literal"><span class="pre">hostname:####</span></code>; to specify a Unix socket use
 <code class="docutils literal"><span class="pre">localhost:/path/to/socket</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;dbname&#39; =&gt; &#39;owncloud&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;dbname&#39; =&gt; &#39;nextcloud&#39;,
 </pre></div>
 </div>
 <p>The name of the Nextcloud database, which is set during installation. You
@@ -269,7 +267,7 @@ $CONFIG = array (
     0 =&gt; &#39;localhost&#39;,
     1 =&gt; &#39;studio&#39;,
   ),
-  &#39;datadirectory&#39; =&gt; &#39;/var/www/owncloud/data&#39;,
+  &#39;datadirectory&#39; =&gt; &#39;/var/www/nextcloud/data&#39;,
   &#39;dbtype&#39; =&gt; &#39;sqlite3&#39;,
   &#39;version&#39; =&gt; &#39;7.0.2.1&#39;,
   &#39;installed&#39; =&gt; true,
@@ -287,10 +285,10 @@ $CONFIG = array (
     1 =&gt; &#39;studio&#39;,
     2 =&gt; &#39;192.168.10.155&#39;
   ),
-  &#39;datadirectory&#39; =&gt; &#39;/var/www/owncloud/data&#39;,
+  &#39;datadirectory&#39; =&gt; &#39;/var/www/nextcloud/data&#39;,
   &#39;dbtype&#39; =&gt; &#39;mysql&#39;,
    &#39;version&#39; =&gt; &#39;7.0.2.1&#39;,
-  &#39;dbname&#39; =&gt; &#39;owncloud&#39;,
+  &#39;dbname&#39; =&gt; &#39;nextcloud&#39;,
   &#39;dbhost&#39; =&gt; &#39;localhost&#39;,
   &#39;dbtableprefix&#39; =&gt; &#39;oc_&#39;,
   &#39;dbuser&#39; =&gt; &#39;oc_carla&#39;,
@@ -352,7 +350,7 @@ expressed in seconds.</p>
 </div>
 <p>Enable or disable session keep-alive when a user is logged in to the Web UI.</p>
 <p>Enabling this sends a &#8220;heartbeat&#8221; to the server to keep it from timing out.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;skeletondirectory&#39; =&gt; &#39;/path/to/owncloud/core/skeleton&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;skeletondirectory&#39; =&gt; &#39;/path/to/nextcloud/core/skeleton&#39;,
 </pre></div>
 </div>
 <p>The directory where the skeleton files are located. These files will be
@@ -385,9 +383,9 @@ resets.</p>
 </pre></div>
 </div>
 <p>The return address that you want to appear on emails sent by the Nextcloud
-server, for example <code class="docutils literal"><span class="pre">oc-admin&#64;example.com</span></code>, substituting your own domain,
+server, for example <code class="docutils literal"><span class="pre">nc-admin&#64;example.com</span></code>, substituting your own domain,
 of course.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;mail_from_address&#39; =&gt; &#39;owncloud&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;mail_from_address&#39; =&gt; &#39;nextcloud&#39;,
 </pre></div>
 </div>
 <p>FROM address that overrides the built-in <code class="docutils literal"><span class="pre">sharing-noreply</span></code> and
@@ -473,10 +471,10 @@ and the proxy handles the <code class="docutils literal"><span class="pre">https
 </pre></div>
 </div>
 <p>Nextcloud attempts to detect the webroot for generating URLs automatically.</p>
-<p>For example, if <code class="docutils literal"><span class="pre">www.example.com/owncloud</span></code> is the URL pointing to the
-Nextcloud instance, the webroot is <code class="docutils literal"><span class="pre">/owncloud</span></code>. When proxies are in use, it
-may be difficult for Nextcloud to detect this parameter, resulting in invalid
-URLs.</p>
+<p>For example, if <code class="docutils literal"><span class="pre">www.example.com/nextcloud</span></code> is the URL pointing to the
+Nextcloud instance, the webroot is <code class="docutils literal"><span class="pre">/nextcloud</span></code>. When proxies are in use,
+it may be difficult for Nextcloud to detect this parameter, resulting in
+invalid URLs.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;overwritecondaddr&#39; =&gt; &#39;&#39;,
 </pre></div>
 </div>
@@ -490,7 +488,7 @@ addresses starting with <code class="docutils literal"><span class="pre">10.0.0.
 <p>Use this configuration parameter to specify the base URL for any URLs which
 are generated within Nextcloud using any kind of command line tools (cron or
 occ). The value should contain the full base URL:
-<code class="docutils literal"><span class="pre">https://www.example.com/owncloud</span></code></p>
+<code class="docutils literal"><span class="pre">https://www.example.com/nextcloud</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;htaccess.RewriteBase&#39; =&gt; &#39;/&#39;,
 </pre></div>
 </div>
@@ -500,8 +498,8 @@ Nextcloud to your <cite>.htaccess</cite> file. While this value is often simply 
 path of the Nextcloud installation it cannot be set automatically properly in
 every scenario and needs thus some manual configuration.</p>
 <p>In a standard Apache setup this usually equals the folder that Nextcloud is
-accessible at. So if Nextcloud is accessible via &#8220;<a class="reference external" href="https://mycloud.org/owncloud">https://mycloud.org/owncloud</a>&#8221;
-the correct value would most likely be &#8220;/owncloud&#8221;. If Nextcloud is running
+accessible at. So if Nextcloud is accessible via &#8220;<a class="reference external" href="https://mycloud.org/nextcloud">https://mycloud.org/nextcloud</a>&#8221;
+the correct value would most likely be &#8220;/nextcloud&#8221;. If Nextcloud is running
 under &#8220;<a class="reference external" href="https://mycloud.org/">https://mycloud.org/</a>&#8221; then it would be &#8220;/&#8221;.</p>
 <p>Note that above rule is not valid in every case, there are some rare setup
 cases where this may not apply. However, to avoid any update problems this
@@ -538,7 +536,7 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 file and folder deletion. For migration purposes, this setting is installed
 initially set to &#8220;auto&#8221;, which is equivalent to the default setting in
-Nextcloud 8.1 and before.</p>
+ownCloud 8.1 and before.</p>
 <p>Available values:</p>
 <ul>
 <li><dl class="first docutils">
@@ -594,14 +592,14 @@ to be deleted.
 Both minimum and maximum times can be set together to explicitly define
 version deletion. For migration purposes, this setting is installed
 initially set to &#8220;auto&#8221;, which is equivalent to the default setting in
-Nextcloud 8.1 and before.</p>
+ownCloud 8.1 and before.</p>
 <p>Available values:</p>
 <ul>
 <li><dl class="first docutils">
 <dt><code class="docutils literal"><span class="pre">auto</span></code></dt>
 <dd><p class="first last">default setting. Automatically expire versions according to expire
-rules. Please refer to Files_versions online documentation for more
-info.</p>
+rules. Please refer to <a class="reference internal" href="../configuration_files/file_versioning.html"><em>Controlling File Versions and Aging</em></a> for
+more information.</p>
 </dd>
 </dl>
 </li>
@@ -648,10 +646,14 @@ enable apps that pass this check.</p>
 </div>
 <p>Check if Nextcloud is up-to-date and shows a notification if a new version is
 available.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;updater.server.url&#39; =&gt; &#39;https://updates.owncloud.com/server/&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;updater.server.url&#39; =&gt; &#39;https://updates.nextcloud.org/server/&#39;,
 </pre></div>
 </div>
 <p>URL that Nextcloud should use to look for updates</p>
+<div class="highlight-python"><div class="highlight"><pre>&#39;updater.release.channel&#39; =&gt; &#39;stable&#39;,
+</pre></div>
+</div>
+<p>Release channel to use for updates</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;has_internet_connection&#39; =&gt; true,
 </pre></div>
 </div>
@@ -765,16 +767,6 @@ debugging, as your logfile will become huge.</p>
 </pre></div>
 </div>
 <p>Log successful cron runs.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;cron.lockfile.location&#39; =&gt; &#39;&#39;,
-</pre></div>
-</div>
-<p>Location of the lock file for cron executions can be specified here.</p>
-<p>Default is within the tmp directory. The file is named in the following way:
-owncloud-server-$INSTANCEID-cron.lock
-where $INSTANCEID is the string specified in the <code class="docutils literal"><span class="pre">instanceid</span></code> field.
-Because the cron lock file is accessed at regular intervals, it may prevent
-enabled disk drives from spinning down. A different location for this file
-can solve such issues.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;log_rotate_size&#39; =&gt; false,
 </pre></div>
 </div>
@@ -783,27 +775,10 @@ or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
 = 100 * 1024 * 1024 bytes). A new logfile is created with a new name when the
 old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.</p>
-</div>
-<div class="section" id="alternate-code-locations">
-<h2>Alternate Code Locations<a class="headerlink" href="#alternate-code-locations" title="Permalink to this headline">¶</a></h2>
-<p>Some of the Nextcloud code may be stored in alternate locations.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;3rdpartyroot&#39; =&gt; &#39;&#39;,
-</pre></div>
-</div>
-<p>Nextcloud uses some 3rd party PHP components to provide certain functionality.</p>
-<p>These components are shipped as part of the software package and reside in
-<code class="docutils literal"><span class="pre">owncloud/3rdparty</span></code>. Use this option to configure a different location.
-For example, if your location is /var/www/owncloud/foo/3rdparty, then the
-correct configuration is &#8216;3rdpartyroot&#8217; =&gt; &#8216;/var/www/owncloud/foo/&#8217;,</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;3rdpartyurl&#39; =&gt; &#39;&#39;,
-</pre></div>
-</div>
-<p>If you have an alternate <code class="docutils literal"><span class="pre">3rdpartyroot</span></code>, you must also configure the URL as
-seen by a Web browser.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;customclient_desktop&#39; =&gt;
-        &#39;http://owncloud.org/sync-clients/&#39;,
+        &#39;https://nextcloud.com/install/&#39;,
 &#39;customclient_android&#39; =&gt;
-        &#39;https://play.google.com/store/apps/details?id=com.owncloud.android&#39;,
+        &#39;https://play.google.com/store/apps/details?id=com.nextcloud.client&#39;,
 &#39;customclient_ios&#39; =&gt;
         &#39;https://itunes.apple.com/us/app/owncloud/id543672169?mt=8&#39;,
 </pre></div>
@@ -831,7 +806,7 @@ to be unstable and under heavy development. Installing these can cause data
 loss or security breaches.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;apps_paths&#39; =&gt; array(
         array(
-                &#39;path&#39;=&gt; &#39;/var/www/owncloud/apps&#39;,
+                &#39;path&#39;=&gt; &#39;/var/www/nextcloud/apps&#39;,
                 &#39;url&#39; =&gt; &#39;/apps&#39;,
                 &#39;writable&#39; =&gt; true,
         ),
@@ -899,7 +874,7 @@ Set to -1 for no limit</p>
 <p>custom path for LibreOffice/OpenOffice binary</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;preview_office_cl_parameters&#39; =&gt;
         &#39; --headless --nologo --nofirststartwizard --invisible --norestore &#39;.
-        &#39;-convert-to pdf -outdir &#39;,
+        &#39;--convert-to pdf --outdir &#39;,
 </pre></div>
 </div>
 <p>Use this if LibreOffice/OpenOffice requires additional arguments.</p>
@@ -1008,8 +983,8 @@ are kicked out of Nextcloud instantly.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;singleuser&#39; =&gt; false,
 </pre></div>
 </div>
-<p>When set to <code class="docutils literal"><span class="pre">true</span></code>, the Nextcloud instance will be unavailable for all users
-who are not in the <code class="docutils literal"><span class="pre">admin</span></code> group.</p>
+<p>When set to <code class="docutils literal"><span class="pre">true</span></code>, the Nextcloud instance will be unavailable for all
+users who are not in the <code class="docutils literal"><span class="pre">admin</span></code> group.</p>
 </div>
 <div class="section" id="ssl">
 <h2>SSL<a class="headerlink" href="#ssl" title="Permalink to this headline">¶</a></h2>
@@ -1099,7 +1074,7 @@ and <code class="docutils literal"><span class="pre">$user</span></code> is the 
                 // generate a password
                 &#39;password&#39; =&gt; &#39;Secr3tPaSSWoRdt7&#39;,
                 // must already exist in the objectstore, name can be different
-                &#39;container&#39; =&gt; &#39;owncloud&#39;,
+                &#39;container&#39; =&gt; &#39;nextcloud&#39;,
                 // create the container if it does not exist. default is false
                 &#39;autocreate&#39; =&gt; true,
                 // required, dev-/trystack defaults to &#39;RegionOne&#39;
@@ -1144,11 +1119,12 @@ filesystem instead of the database to keep the share information.</p>
 <h2>All other configuration options<a class="headerlink" href="#all-other-configuration-options" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>&#39;dbdriveroptions&#39; =&gt; array(
         PDO::MYSQL_ATTR_SSL_CA =&gt; &#39;/file/path/to/ca_cert.pem&#39;,
+        PDO::MYSQL_ATTR_INIT_COMMAND =&gt; &#39;SET wait_timeout = 28800&#39;
 ),
 </pre></div>
 </div>
 <p>Additional driver options for the database connection, eg. to enable SSL
-encryption in MySQL.</p>
+encryption in MySQL or specify a custom wait timeout on a cheap hoster.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;sqlite.journal_mode&#39; =&gt; &#39;DELETE&#39;,
 </pre></div>
 </div>
@@ -1166,14 +1142,14 @@ can be &#8216;WAL&#8217; or &#8216;DELETE&#8217; see for more details <a class="
 <dl class="docutils">
 <dt>Available:</dt>
 <dd><ul class="first last simple">
-<li>sqlite (SQLite3 - Not in Enterprise Edition)</li>
+<li>sqlite (SQLite3)</li>
 <li>mysql (MySQL)</li>
 <li>pgsql (PostgreSQL)</li>
-<li>oci (Oracle - Enterprise Edition Only)</li>
+<li>oci (Oracle)</li>
 </ul>
 </dd>
 </dl>
-<div class="highlight-python"><div class="highlight"><pre>&#39;tempdirectory&#39; =&gt; &#39;/tmp/owncloudtemp&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;tempdirectory&#39; =&gt; &#39;/tmp/nextcloudtemp&#39;,
 </pre></div>
 </div>
 <p>Override where Nextcloud stores temporary files. Useful in situations where
@@ -1200,7 +1176,7 @@ with this name. <code class="docutils literal"><span class="pre">.htaccess</span
 </pre></div>
 </div>
 <p>If you are applying a theme to Nextcloud, enter the name of the theme here.</p>
-<p>The default location for themes is <code class="docutils literal"><span class="pre">owncloud/themes/</span></code>.</p>
+<p>The default location for themes is <code class="docutils literal"><span class="pre">nextcloud/themes/</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;cipher&#39; =&gt; &#39;AES-256-CFB&#39;,
 </pre></div>
 </div>
@@ -1209,11 +1185,11 @@ AES-256-CFB are supported.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;minimum.supported.desktop.version&#39; =&gt; &#39;1.7.0&#39;,
 </pre></div>
 </div>
-<p>The minimum Nextcloud desktop client version that will be allowed to sync with
+<p>The minimum ownCloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
-by the server. Defaults to the minimum officially supported Nextcloud version at
-the time of release of this server version.</p>
-<p>When changing this, note that older unsupported versions of the Nextcloud desktop
+by the server. Defaults to the minimum officially supported ownCloud desktop
+client version at the time of release of this server version.</p>
+<p>When changing this, note that older unsupported versions of the ownCloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;quota_include_external_storage&#39; =&gt; false,
@@ -1235,7 +1211,7 @@ general use if outside changes might happen.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;part_file_in_storage&#39; =&gt; true,
 </pre></div>
 </div>
-<p>On default Nextcloud will store the part files created during upload in the
+<p>By default Nextcloud will store the part files created during upload in the
 same storage as the upload target. Setting this to false will store the part
 files in the root of the users folder which might be required to work with certain
 external storage setups that have limited rename capabilities.</p>
@@ -1244,7 +1220,7 @@ external storage setups that have limited rename capabilities.</p>
 </div>
 <p>All css and js files will be served by the Web server statically in one js
 file and one css file if this is set to <code class="docutils literal"><span class="pre">true</span></code>. This improves performance.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;assetdirectory&#39; =&gt; &#39;/var/www/owncloud&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;assetdirectory&#39; =&gt; &#39;/var/www/nextcloud&#39;,
 </pre></div>
 </div>
 <p>The parent of the directory where css and js assets will be stored if
@@ -1253,7 +1229,7 @@ will be stored in a subdirectory of this directory named &#8216;assets&#8217;. T
 server <em>must</em> be configured to serve that directory as $WEBROOT/assets.</p>
 <p>You will only likely need to change this if the main Nextcloud directory
 is not writeable by the Web server in your configuration.</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;mount_file&#39; =&gt; &#39;/var/www/owncloud/data/mount.json&#39;,
+<div class="highlight-python"><div class="highlight"><pre>&#39;mount_file&#39; =&gt; &#39;/var/www/nextcloud/data/mount.json&#39;,
 </pre></div>
 </div>
 <p>Where <code class="docutils literal"><span class="pre">mount.json</span></code> file should be stored, defaults to <code class="docutils literal"><span class="pre">data/mount.json</span></code>
@@ -1261,8 +1237,8 @@ in the Nextcloud directory.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;filesystem_cache_readonly&#39; =&gt; false,
 </pre></div>
 </div>
-<p>When <code class="docutils literal"><span class="pre">true</span></code>, prevent Nextcloud from changing the cache due to changes in the
-filesystem for all storage.</p>
+<p>When <code class="docutils literal"><span class="pre">true</span></code>, prevent Nextcloud from changing the cache due to changes in
+the filesystem for all storage.</p>
 <div class="highlight-python"><div class="highlight"><pre>&#39;secret&#39; =&gt; &#39;&#39;,
 </pre></div>
 </div>

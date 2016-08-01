@@ -79,7 +79,6 @@
 <li class="toctree-l2"><a class="reference internal" href="backup.html">Backing up Nextcloud</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">How to Upgrade Your Nextcloud Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#debian-migration-to-official-nextcloud-packages">Debian Migration to Official Nextcloud Packages</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade Nextcloud From Packages</a></li>
@@ -124,16 +123,12 @@ shared hosters, and for users who want an easy way to track different
 release channels. (It is not available and not supported on the Enterprise
 edition.)</li>
 <li><a class="reference internal" href="manual_upgrade.html"><em>Manually upgrading</em></a> with the Nextcloud <code class="docutils literal"><span class="pre">.tar</span></code> archive
-from <a href="#id1"><span class="problematic" id="id2">`owncloud.org/install/`_</span></a>.</li>
+from <a class="reference external" href="https://nextcloud.com/install">https://nextcloud.com/install</a>.</li>
 <li>Manually upgrading is also an option for users on shared hosting; download
 and unpack the Nextcloud tarball to your PC. Delete your existing Nextcloud
 files, except <code class="docutils literal"><span class="pre">data/</span></code> and <code class="docutils literal"><span class="pre">config/</span></code> files, on your hosting account. Then
 transfer the new Nextcloud files to your hosting account, again
 preserving your existing <code class="docutils literal"><span class="pre">data/</span></code> and <code class="docutils literal"><span class="pre">config/</span></code> files.</li>
-<li>Enterprise customers will use their Enterprise software
-repositories to maintain their Nextcloud servers, rather than the Open Build
-Service. Please see <code class="xref doc docutils literal"><span class="pre">../enterprise_installation/linux_installation</span></code> for
-more information.</li>
 </ul>
 <p>When an update is available for your Nextcloud server, you will see a
 notification at the top of your Nextcloud Web interface. When you click the
@@ -149,15 +144,12 @@ mode, so your users will be locked out until the upgrade is completed. Large
 installations may take several hours to complete the upgrade.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><strong>Downgrading is not supported</strong> and risks corrupting your data!</p>
-</div>
-<dl class="docutils">
-<dt>If</dt>
-<dd>you want to revert to an older Nextcloud version, make a new, fresh
+<p><strong>Downgrading is not supported</strong> and risks corrupting your data!</p>
+<p class="last">If you want to revert to an older Nextcloud version, make a new, fresh
 installation and then restore your data from backup. Before doing this,
 file a support ticket (if you have paid support) or ask for help in the
-Nextcloud forums to see if your issue can be resolved without downgrading.</dd>
-</dl>
+Nextcloud forums to see if your issue can be resolved without downgrading.</p>
+</div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>You should always maintain <a class="reference internal" href="backup.html"><em>regular backups</em></a> and make a fresh
@@ -167,12 +159,6 @@ Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
 designation. <strong>Install unsupported apps at your own risk</strong>. Then, before the
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
 may re-enable them.</p>
-</div>
-<div class="section" id="debian-migration-to-official-nextcloud-packages">
-<h2>Debian Migration to Official Nextcloud Packages<a class="headerlink" href="#debian-migration-to-official-nextcloud-packages" title="Permalink to this headline">¶</a></h2>
-<p>As of March 2016 Debian will not include Nextcloud packages. Debian users can
-migrate to the official Nextcloud packages by following this guide,
-<a class="reference external" href="https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official-packages/">Upgrading Nextcloud on Debian Stable to official packages</a>.</p>
 </div>
 </div>
 

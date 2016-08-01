@@ -173,16 +173,16 @@ access.</p>
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="multiple-domains-reverse-ssl-proxy">
 <h3>Multiple Domains Reverse SSL Proxy<a class="headerlink" href="#multiple-domains-reverse-ssl-proxy" title="Permalink to this headline">¶</a></h3>
-<p>If you want to access your Nextcloud installation <strong>http://domain.tld/owncloud</strong>
+<p>If you want to access your Nextcloud installation <strong>http://domain.tld/nextcloud</strong>
 via a multiple domains reverse SSL proxy
-<strong>https://ssl-proxy.tld/domain.tld/owncloud</strong> with the IP address <strong>10.0.0.1</strong>
+<strong>https://ssl-proxy.tld/domain.tld/nextcloud</strong> with the IP address <strong>10.0.0.1</strong>
 you can set the following parameters inside the <code class="file docutils literal"><span class="pre">config/config.php</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;?php
 $CONFIG = array (
   &quot;trusted_proxies&quot;   =&gt; [&#39;10.0.0.1&#39;],
   &quot;overwritehost&quot;     =&gt; &quot;ssl-proxy.tld&quot;,
   &quot;overwriteprotocol&quot; =&gt; &quot;https&quot;,
-  &quot;overwritewebroot&quot;  =&gt; &quot;/domain.tld/owncloud&quot;,
+  &quot;overwritewebroot&quot;  =&gt; &quot;/domain.tld/nextcloud&quot;,
   &quot;overwritecondaddr&quot; =&gt; &quot;^10\.0\.0\.1$&quot;,
 );
 </pre></div>

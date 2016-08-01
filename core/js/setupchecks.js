@@ -76,7 +76,8 @@
 			$.ajax({
 				type: 'PROPFIND',
 				url: url,
-				complete: afterCall
+				complete: afterCall,
+				allowAuthErrors: true
 			});
 			return deferred.promise();
 		},
@@ -123,7 +124,7 @@
 					}
 					if(!data.forwardedForHeadersWorking) {
 						messages.push({
-							msg: t('core', 'The reverse proxy headers configuration is incorrect, or you are accessing ownCloud from a trusted proxy. If you are not accessing ownCloud from a trusted proxy, this is a security issue and can allow an attacker to spoof their IP address as visible to ownCloud. Further information can be found in our <a target="_blank" href="{docLink}">documentation</a>.', {docLink: data.reverseProxyDocs}),
+							msg: t('core', 'The reverse proxy headers configuration is incorrect, or you are accessing Nextcloud from a trusted proxy. If you are not accessing Nextcloud from a trusted proxy, this is a security issue and can allow an attacker to spoof their IP address as visible to Nextcloud. Further information can be found in our <a target="_blank" href="{docLink}">documentation</a>.', {docLink: data.reverseProxyDocs}),
 							type: OC.SetupChecks.MESSAGE_TYPE_WARNING
 						});
 					}
@@ -209,7 +210,8 @@
 			$.ajax({
 				type: 'GET',
 				url: OC.linkTo('', oc_dataURL+'/htaccesstest.txt?t=' + (new Date()).getTime()),
-				complete: afterCall
+				complete: afterCall,
+				allowAuthErrors: true
 			});
 			return deferred.promise();
 		},

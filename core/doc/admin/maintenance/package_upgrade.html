@@ -123,12 +123,12 @@
 <p class="last">Starting with Nextcloud 8.2 the Linux package repositories have
 changed, and <strong>you must configure your system to use these new
 repositories</strong> to install or upgrade Nextcloud 8.2+. The new repositories are
-at our <a class="reference external" href="https://download.owncloud.org/download/repositories/stable/owncloud/">Open Build Service</a>.</p>
+at our <a href="#id1"><span class="problematic" id="id2">`Open Build Service`_</span></a>.</p>
 </div>
 <div class="section" id="upgrade-quickstart">
 <h2>Upgrade Quickstart<a class="headerlink" href="#upgrade-quickstart" title="Permalink to this headline">¶</a></h2>
 <p>The best method for keeping Nextcloud current on Linux servers is by configuring
-your system to use Nextcloud&#8217;s <a class="reference external" href="https://download.owncloud.org/download/repositories/stable/owncloud/">Open Build Service</a> repository. Then stay
+your system to use Nextcloud&#8217;s <a href="#id3"><span class="problematic" id="id4">`Open Build Service`_</span></a> repository. Then stay
 current by using your Linux package manager to install fresh Nextcloud packages.
 After installing upgraded packages you must run a few more steps to complete
 the
@@ -148,14 +148,14 @@ Nextcloud directories.</li>
 </div>
 <div class="section" id="upgrade-tips">
 <h2>Upgrade Tips<a class="headerlink" href="#upgrade-tips" title="Permalink to this headline">¶</a></h2>
-<p>Upgrading Nextcloud from our <a class="reference external" href="https://download.owncloud.org/download/repositories/stable/owncloud/">Open Build Service</a> repository is just like any
+<p>Upgrading Nextcloud from our <a href="#id5"><span class="problematic" id="id6">`Open Build Service`_</span></a> repository is just like any
 normal Linux upgrade. For example, on Debian or Ubuntu Linux this is the
 standard system upgrade command:</p>
 <div class="highlight-python"><div class="highlight"><pre>apt-get update &amp;&amp; apt-get upgrade
 </pre></div>
 </div>
 <p>Or you can upgrade just Nextcloud with this command:</p>
-<div class="highlight-python"><div class="highlight"><pre>apt-get update &amp;&amp; apt-get install owncloud
+<div class="highlight-python"><div class="highlight"><pre>apt-get update &amp;&amp; apt-get install nextcloud
 </pre></div>
 </div>
 <p>On Fedora, CentOS, and Red Hat Linux use <code class="docutils literal"><span class="pre">yum</span></code> to see all available updates:</p>
@@ -167,14 +167,14 @@ standard system upgrade command:</p>
 </pre></div>
 </div>
 <p>Or update only Nextcloud:</p>
-<div class="highlight-python"><div class="highlight"><pre>yum update owncloud
+<div class="highlight-python"><div class="highlight"><pre>yum update nextcloud
 </pre></div>
 </div>
 <p>Your Linux package manager only downloads the current Nextcloud packages. Then
 your Nextcloud server is immediately put into maintenance mode. You may not see
 this until you refresh your Nextcloud page.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../_images/upgrade-1.png"><img alt="Nextcloud status screen informing users that it is in maintenance mode." src="../_images/upgrade-1.png" style="width: 308.25px; height: 346.5px;" /></a>
+<a class="reference internal image-reference" href="../_images/upgrade-1.png"><img alt="Nextcloud status screen informing users that it is in maintenance mode." src="../_images/upgrade-1.png" style="width: 727.5px; height: 454.5px;" /></a>
 </div>
 <p>Then use <code class="docutils literal"><span class="pre">occ</span></code> to complete the upgrade. You must run <code class="docutils literal"><span class="pre">occ</span></code> as your HTTP
 user. This example is for Debian/Ubuntu:</p>
@@ -217,7 +217,7 @@ can bring your Nextcloud current with these steps:</p>
 <li>Run upgrade routine</li>
 <li>Repeat from step 3 until you reach the last available major release</li>
 </ol>
-<p>You&#8217;ll find previous Nextcloud releases in the <a class="reference external" href="https://owncloud.org/changelog/">Nextcloud Server Changelog</a>.</p>
+<p>You&#8217;ll find previous Nextcloud releases in the <a class="reference external" href="https://nextcloud.com/changelog/">Nextcloud Server Changelog</a>.</p>
 <p>If upgrading via your package manager fails, then you must perform a
 <a class="reference internal" href="manual_upgrade.html"><em>Manual Nextcloud Upgrade</em></a>.</p>
 </div>

@@ -46,7 +46,7 @@ class Install extends Command {
 	protected function configure() {
 		$this
 			->setName('maintenance:install')
-			->setDescription('install ownCloud')
+			->setDescription('install Nextcloud')
 			->addOption('database', null, InputOption::VALUE_REQUIRED, 'Supported database type', 'sqlite')
 			->addOption('database-name', null, InputOption::VALUE_REQUIRED, 'Name of the database')
 			->addOption('database-host', null, InputOption::VALUE_REQUIRED, 'Hostname of the database', 'localhost')
@@ -106,7 +106,12 @@ class Install extends Command {
 		$dbUser = $input->getOption('database-user');
 		$dbPass = $input->getOption('database-pass');
 		$dbName = $input->getOption('database-name');
-		$dbHost = $input->getOption('database-host');
+		if ($db === 'oci') {
+			// an empty hostname needs to be read from the raw parameters
+			$dbHost = $input->getParameterOption('--database-host', '');
+		} else {
+			$dbHost = $input->getOption('database-host');
+		}
 		$dbTablePrefix = 'oc_';
 		if ($input->hasParameterOption('--database-table-prefix')) {
 			$dbTablePrefix = (string) $input->getOption('database-table-prefix');

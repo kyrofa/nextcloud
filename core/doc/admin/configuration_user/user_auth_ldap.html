@@ -208,7 +208,7 @@ directory. Leave it empty for anonymous access. We recommend that you have a
 special LDAP system user for this.</p>
 <p>Example:</p>
 <ul class="last simple">
-<li><em>uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com</em></li>
+<li><em>uid=nextcloudsystemuser,cn=sysusers,dc=my-company,dc=com</em></li>
 </ul>
 </dd>
 <dt>Password:</dt>
@@ -254,7 +254,7 @@ the input field is disabled. Please contact your LDAP administrator.</p>
 <dt>Edit raw filter instead:</dt>
 <dd><p class="first">Clicking on this text toggles the filter mode and you can enter the raw LDAP
 filter directly. Example:</p>
-<div class="last highlight-python"><div class="highlight"><pre>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+<div class="last highlight-python"><div class="highlight"><pre>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
 dc=example,dc=com))
 </pre></div>
 </div>
@@ -297,13 +297,13 @@ user upon login.</p>
 <p>Examples:</p>
 <ul class="last">
 <li><p class="first">only username:</p>
-<div class="highlight-python"><div class="highlight"><pre>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+<div class="highlight-python"><div class="highlight"><pre>(&amp;(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
 dc=example,dc=com)(uid=%uid)
 </pre></div>
 </div>
 </li>
 <li><p class="first">username or email address:</p>
-<div class="highlight-python"><div class="highlight"><pre>((&amp;(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+<div class="highlight-python"><div class="highlight"><pre>((&amp;(objectClass=inetOrgPerson)(memberOf=cn=nextcloudusers,ou=groups,
 dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 </pre></div>
 </div>
@@ -532,7 +532,7 @@ behavior.</p>
 </dd>
 <dt>User Home Folder Naming Rule:</dt>
 <dd><p class="first">By default, the Nextcloud server creates the user directory in your Nextcloud
-data directory and gives it the Nextcloud username, .e.g <code class="docutils literal"><span class="pre">/var/www/owncloud/data/alice</span></code>. You may want to override this setting and name it after an LDAP
+data directory and gives it the Nextcloud username, .e.g <code class="docutils literal"><span class="pre">/var/www/nextcloud/data/alice</span></code>. You may want to override this setting and name it after an LDAP
 attribute value. The attribute can also return an absolute path, e.g.
 <code class="docutils literal"><span class="pre">/mnt/storage43/alice</span></code>. Leave it empty for default behavior.</p>
 <ul class="last simple">

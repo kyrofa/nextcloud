@@ -116,24 +116,23 @@
 <p>If you have trouble installing, configuring or maintaining Nextcloud, please
 refer to our community support channels:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://forum.owncloud.org">The Nextcloud Forums</a></li>
+<li><a class="reference external" href="https://help.nextcloud.com">The Nextcloud Forums</a></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Nextcloud forums have a <a class="reference external" href="https://forum.owncloud.org/viewforum.php?f=17">FAQ page</a> where each topic corresponds
+<p class="last">The Nextcloud forums have a <a href="#id3"><span class="problematic" id="id4">`FAQ page`_</span></a> where each topic corresponds
 to typical mistakes or frequently occurring issues</p>
 </div>
 <ul class="simple">
-<li><a class="reference external" href="https://mailman.owncloud.org/mailman/listinfo/user">The Nextcloud User mailing list</a></li>
-<li>The Nextcloud IRC chat channel <code class="docutils literal"><span class="pre">irc://#owncloud&#64;freenode.net</span></code> on
-freenode.net, also accessible via <a class="reference external" href="http://webchat.freenode.net/?channels=owncloud">webchat</a></li>
+<li>The Nextcloud IRC chat channel <code class="docutils literal"><span class="pre">irc://#nextcloud&#64;freenode.net</span></code> on
+freenode.net, also accessible via <a class="reference external" href="http://webchat.freenode.net/?channels=nextcloud">webchat</a></li>
 </ul>
 <p>Please understand that all these channels essentially consist of users like you
 helping each other out. Consider helping others out where you can, to contribute
 back for the help you get. This is the only way to keep a community like
 Nextcloud healthy and sustainable!</p>
 <p>If you are using Nextcloud in a business or otherwise large scale deployment,
-note that Nextcloud Inc. offers the <a class="reference external" href="https://owncloud.com/lp/community-or-enterprise/">Enterprise Edition</a> with commercial
+note that Nextcloud GmbH. offers the <a href="#id5"><span class="problematic" id="id6">`Enterprise Edition`_</span></a> with commercial
 support options.</p>
 <div class="section" id="bugs">
 <h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
@@ -142,7 +141,7 @@ support options.</p>
 <li>Search for a solution (see the options above)</li>
 <li>Double-check your configuration</li>
 </ul>
-<p>If you can&#8217;t find a solution, please use our <a class="reference external" href="https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html">bugtracker</a>. You can generate a
+<p>If you can&#8217;t find a solution, please use our <a class="reference external" href="https://docs.nextcloud.org/server/9/developer_manual/bugtracker/index.html">bugtracker</a>. You can generate a
 configuration report with the <a class="reference internal" href="../configuration_server/occ_command.html#config-commands-label"><span>occ config command</span></a>, with passwords automatically obscured.</p>
 </div>
 <div class="section" id="id1">
@@ -174,7 +173,7 @@ the <a class="reference external" href="https://getfirebug.com/">Firebug extensi
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The logfile of Nextcloud is located in the data directory
-<code class="docutils literal"><span class="pre">owncloud/data/owncloud.log</span></code>.</p>
+<code class="docutils literal"><span class="pre">nextcloud/data/owncloud.log</span></code>.</p>
 </div>
 </div>
 <div class="section" id="php-version-and-information">
@@ -212,7 +211,7 @@ not be modified manually.</p>
 </ul>
 <p>If you need to directly upload files from the same server please use a WebDAV
 command line client like <code class="docutils literal"><span class="pre">cadaver</span></code> to upload files to the WebDAV interface at:</p>
-<p><code class="docutils literal"><span class="pre">https://example.com/owncloud/remote.php/dav</span></code></p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code></p>
 </div>
 <div class="section" id="common-problems-error-messages">
 <h3>Common problems / error messages<a class="headerlink" href="#common-problems-error-messages" title="Permalink to this headline">¶</a></h3>
@@ -244,7 +243,7 @@ if it exists at all. If you&#8217;re using MySQL please start your database.</li
 or <code class="docutils literal"><span class="pre">mod_proxy_fcgi</span></code> are not passing the needed authentication headers to
 PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
 failing. Information on how to correctly configure your environment can be
-found at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=30646">forums</a>.</li>
+found at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=30646">ownCloud forums</a>.</li>
 </ul>
 </div>
 </div>
@@ -267,7 +266,7 @@ You need to set the directive <code class="docutils literal"><span class="pre">l
 to store the logfile in the <code class="docutils literal"><span class="pre">error_log</span></code> directive. After those changes you
 need to restart your Web server.</li>
 <li>The logfile of Nextcloud is located in the data directory
-<code class="docutils literal"><span class="pre">/var/www/owncloud/data/owncloud.log</span></code>.</li>
+<code class="docutils literal"><span class="pre">/var/www/nextcloud/data/owncloud.log</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="web-server-and-php-modules">
@@ -330,7 +329,7 @@ clients, and possible problems with each one)</li>
 <li><a class="reference external" href="http://sabre.io/dav/clients/finder/">Finder, OS X&#8217;s built-in WebDAV client</a>
 (Describes problems with Finder on various Web servers)</li>
 </ul>
-<p>There is also a well maintained FAQ thread available at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7536">Nextcloud Forums</a>
+<p>There is also a well maintained FAQ thread available at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7536">ownCloud Forums</a>
 which contains various additional information about WebDAV problems.</p>
 </div>
 <div class="section" id="troubleshooting-contacts-calendar">
@@ -349,8 +348,8 @@ important to have a correct working setup of the following URLs:</p>
 <p>Those need to be redirecting your clients to the correct DAV endpoints. If
 running Nextcloud at the document root of your Web server the correct URL is:</p>
 <p><code class="docutils literal"><span class="pre">https://example.com/remote.php/dav</span></code></p>
-<p>and if running in a subfolder like <code class="docutils literal"><span class="pre">owncloud</span></code>:</p>
-<p><code class="docutils literal"><span class="pre">https://example.com/owncloud/remote.php/dav</span></code></p>
+<p>and if running in a subfolder like <code class="docutils literal"><span class="pre">nextcloud</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code></p>
 <p>For the first case the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
 this work for your when running Apache. You only need to make sure that your
 Web server is using this file. When running NGINX please refer to
@@ -358,14 +357,14 @@ Web server is using this file. When running NGINX please refer to
 <p>If your Nextcloud instance is installed in a subfolder called <code class="docutils literal"><span class="pre">owncloud</span></code> and
 you&#8217;re running Apache create or edit the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file within the
 document root of your Web server and add the following lines:</p>
-<div class="highlight-python"><div class="highlight"><pre>Redirect 301 /.well-known/carddav /owncloud/remote.php/dav
-Redirect 301 /.well-known/caldav /owncloud/remote.php/dav
+<div class="highlight-python"><div class="highlight"><pre>Redirect 301 /.well-known/carddav /nextcloud/remote.php/dav
 </pre></div>
 </div>
-<p>Now change the URL in the client settings to just use:</p>
+<p>nextcloud
+Now change the URL in the client settings to just use:</p>
 <p><code class="docutils literal"><span class="pre">https://example.com</span></code></p>
 <p>instead of e.g.</p>
-<p><code class="docutils literal"><span class="pre">https://example.com/owncloud/remote.php/dav/principals/username</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav/principals/username</span></code>.</p>
 <p>There are also several techniques to remedy this, which are described extensively at
 the <a class="reference external" href="http://sabre.io/dav/service-discovery/">Sabre DAV website</a>.</p>
 </div>

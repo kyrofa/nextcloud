@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Nextcloud 9 Server Administration Manual 9 documentation" href="../contents.html" />
     <link rel="up" title="Installation" href="index.html" />
-    <link rel="next" title="Nextcloud Community Appliance" href="appliance_installation.html" />
+    <link rel="next" title="Installing PHP 5.4 on RHEL 6 and CentOS 6" href="php_54_installation.html" />
     <link rel="prev" title="Supported Apps in Nextcloud" href="apps_supported.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -71,7 +71,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Nextcloud Deployment Recommendations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linux_installation.html">Preferred Linux Installation Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation Wizard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing Nextcloud From the Command Line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
@@ -91,12 +90,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#other-web-servers">Other Web Servers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="appliance_installation.html">Nextcloud Community Appliance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_54_installation.html">Installing PHP 5.4 on RHEL 6 and CentOS 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_55_installation.html">Installing PHP 5.5 on RHEL 7 and CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_examples.html">Nginx Example Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_8x.html">Nginx configuration for the Nextcloud 8.x branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx_owncloud_9x.html">Nginx Configuration for the Nextcloud 9.x Branches</a></li>
 </ul>
 </li>
@@ -125,27 +122,17 @@
     </a>
   </li>
   <li class="next">
-    <a href="appliance_installation.html" title="Next Chapter: Nextcloud Community Appliance"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Nextcloud Com... &raquo;</span>
+    <a href="php_54_installation.html" title="Next Chapter: Installing PHP 5.4 on RHEL 6 and CentOS 6"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Installing PH... &raquo;</span>
     </a>
   </li>
 </ul>
 						
   <div class="section" id="manual-installation-on-linux">
 <h1>Manual Installation on Linux<a class="headerlink" href="#manual-installation-on-linux" title="Permalink to this headline">¶</a></h1>
-<p>Installing Nextcloud on Linux from our Open Build Service packages is the
-preferred method (see <a class="reference internal" href="linux_installation.html"><em>Preferred Linux Installation Method</em></a>). These are maintained by
-Nextcloud engineers, and you can use your package manager to keep your Nextcloud
-server up-to-date.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Enterprise customers should refer to
-<code class="xref doc docutils literal"><span class="pre">../enterprise_installation/linux_installation</span></code></p>
-</div>
-<p>If there are no packages for your Linux distribution, or you prefer installing
-from the source tarball, you can setup Nextcloud from scratch using a classic
+<p>You can setup Nextcloud from scratch using a classic
 LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a
 complete walk-through for installing Nextcloud on Ubuntu 14.04 LTS Server with
-Apache and MariaDB, using <a class="reference external" href="https://owncloud.org/install/">the Nextcloud .tar archive</a>.</p>
+Apache and MariaDB, using <a class="reference external" href="https://nextcloud.com/install/">the Nextcloud .tar archive</a>.</p>
 <ul class="simple">
 <li><a class="reference internal" href="#prerequisites-label"><span>Prerequisites</span></a></li>
 <li><a class="reference internal" href="#ubuntu-installation-label"><span>Example Installation on Ubuntu 14.04 LTS Server</span></a></li>
@@ -269,49 +256,49 @@ during Nextcloud database setup.</li>
 </ul>
 <p>Now download the archive of the latest Nextcloud version:</p>
 <ul>
-<li><p class="first">Go to the <a class="reference external" href="https://owncloud.org/install">Nextcloud Download Page</a>.</p>
+<li><p class="first">Go to the <a class="reference external" href="https://nextcloud.com/install">Nextcloud Download Page</a>.</p>
 </li>
 <li><p class="first">Go to <strong>Download Nextcloud Server &gt; Download &gt; Archive file for
 server owners</strong> and download either the tar.bz2 or .zip archive.</p>
 </li>
-<li><p class="first">This downloads a file named owncloud-x.y.z.tar.bz2 or owncloud-x.y.z.zip
+<li><p class="first">This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
 (where x.y.z is the version number).</p>
 </li>
-<li><p class="first">Download its corresponding checksum file, e.g. owncloud-x.y.z.tar.bz2.md5,
-or owncloud-x.y.z.tar.bz2.sha256.</p>
+<li><p class="first">Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+or nextcloud-x.y.z.tar.bz2.sha256.</p>
 </li>
 <li><p class="first">Verify the MD5 or SHA256 sum:</p>
-<div class="highlight-python"><div class="highlight"><pre>md5sum -c owncloud-x.y.z.tar.bz2.md5 &lt; owncloud-x.y.z.tar.bz2
-sha256sum -c owncloud-x.y.z.tar.bz2.sha256 &lt; owncloud-x.y.z.tar.bz2
-md5sum  -c owncloud-x.y.z.zip.md5 &lt; owncloud-x.y.z.zip
-sha256sum  -c owncloud-x.y.z.zip.sha256 &lt; owncloud-x.y.z.zip
+<div class="highlight-python"><div class="highlight"><pre>md5sum -c nextcloud-x.y.z.tar.bz2.md5 &lt; nextcloud-x.y.z.tar.bz2
+sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 &lt; nextcloud-x.y.z.tar.bz2
+md5sum  -c nextcloud-x.y.z.zip.md5 &lt; nextcloud-x.y.z.zip
+sha256sum  -c nextcloud-x.y.z.zip.sha256 &lt; nextcloud-x.y.z.zip
 </pre></div>
 </div>
 </li>
 <li><p class="first">You may also verify the PGP signature:</p>
-<div class="highlight-python"><div class="highlight"><pre>wget https://download.owncloud.org/community/owncloud-x.y.z.tar.bz2.asc
-wget https://owncloud.org/owncloud.asc
-gpg --import owncloud.asc
-gpg --verify owncloud-x.y.z.tar.bz2.asc owncloud-x.y.z.tar.bz2
+<div class="highlight-python"><div class="highlight"><pre>wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
+wget https://nextcloud.com/nextcloud.asc
+gpg --import nextcloud.asc
+gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
 </pre></div>
 </div>
 </li>
 <li><p class="first">Now you can extract the archive contents. Run the appropriate unpacking
 command for your archive type:</p>
-<div class="highlight-python"><div class="highlight"><pre>tar -xjf owncloud-x.y.z.tar.bz2
-unzip owncloud-x.y.z.zip
+<div class="highlight-python"><div class="highlight"><pre>tar -xjf nextcloud-x.y.z.tar.bz2
+unzip nextcloud-x.y.z.zip
 </pre></div>
 </div>
 </li>
-<li><p class="first">This unpacks to a single <code class="docutils literal"><span class="pre">owncloud</span></code> directory. Copy the Nextcloud directory
+<li><p class="first">This unpacks to a single <code class="docutils literal"><span class="pre">nextcloud</span></code> directory. Copy the Nextcloud directory
 to its final destination. When you are running the Apache HTTP server you may
 safely install Nextcloud in your Apache document root:</p>
-<div class="highlight-python"><div class="highlight"><pre>cp -r owncloud /path/to/webserver/document-root
+<div class="highlight-python"><div class="highlight"><pre>cp -r nextcloud /path/to/webserver/document-root
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">/path/to/webserver/document-root</span></code> is replaced by the
 document root of your Web server:</p>
-<div class="highlight-python"><div class="highlight"><pre>cp -r owncloud /var/www
+<div class="highlight-python"><div class="highlight"><pre>cp -r nextcloud /var/www
 </pre></div>
 </div>
 </li>
@@ -336,11 +323,11 @@ UNCOMMITTED.&#39;
 <span id="apache-configuration-label"></span><h2>Apache Web Server Configuration<a class="headerlink" href="#apache-web-server-configuration" title="Permalink to this headline">¶</a></h2>
 <p>On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration so all you have to do is create a
-<code class="file docutils literal"><span class="pre">/etc/apache2/sites-available/owncloud.conf</span></code> file with these lines in
+<code class="file docutils literal"><span class="pre">/etc/apache2/sites-available/nextcloud.conf</span></code> file with these lines in
 it, replacing the <strong>Directory</strong> and other filepaths with your own filepaths:</p>
-<div class="highlight-python"><div class="highlight"><pre>Alias /owncloud &quot;/var/www/owncloud/&quot;
+<div class="highlight-python"><div class="highlight"><pre>Alias /nextcloud &quot;/var/www/nextcloud/&quot;
 
-&lt;Directory /var/www/owncloud/&gt;
+&lt;Directory /var/www/nextcloud/&gt;
   Options +FollowSymlinks
   AllowOverride All
 
@@ -348,14 +335,14 @@ it, replacing the <strong>Directory</strong> and other filepaths with your own f
   Dav off
  &lt;/IfModule&gt;
 
- SetEnv HOME /var/www/owncloud
- SetEnv HTTP_HOME /var/www/owncloud
+ SetEnv HOME /var/www/nextcloud
+ SetEnv HTTP_HOME /var/www/nextcloud
 
 &lt;/Directory&gt;
 </pre></div>
 </div>
 <p>Then create a symlink to <code class="file docutils literal"><span class="pre">/etc/apache2/sites-enabled</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">owncloud</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">owncloud</span><span class="o">.</span><span class="n">conf</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">enabled</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">conf</span>
 </pre></div>
 </div>
 <div class="section" id="additional-apache-configurations">
@@ -440,7 +427,7 @@ the graphical Installation Wizard, or on the command line with the <code class="
 command. To enable this, temporarily change the ownership on your Nextcloud
 directories to your HTTP user (see <a class="reference internal" href="installation_wizard.html#strong-perms-label"><span>Setting Strong Directory Permissions</span></a> to learn how to
 find your HTTP user):</p>
-<div class="highlight-python"><div class="highlight"><pre>chown -R www-data:www-data /var/www/owncloud/
+<div class="highlight-python"><div class="highlight"><pre>chown -R www-data:www-data /var/www/nextcloud/
 </pre></div>
 </div>
 <div class="admonition note">
@@ -540,15 +527,15 @@ your <code class="docutils literal"><span class="pre">php-fpm</span></code> conf
 <code class="docutils literal"><span class="pre">post_max_size</span></code> values. You will need to restart <code class="docutils literal"><span class="pre">php5-fpm</span></code> and your HTTP
 server in order for these changes to be applied.</p>
 <p><strong>.htaccess notes for Apache</strong></p>
-<p>Nextcloud comes with its own <code class="docutils literal"><span class="pre">owncloud/.htaccess</span></code> file. Because <code class="docutils literal"><span class="pre">php-fpm</span></code> can&#8217;t
+<p>Nextcloud comes with its own <code class="docutils literal"><span class="pre">nextcloud/.htaccess</span></code> file. Because <code class="docutils literal"><span class="pre">php-fpm</span></code> can&#8217;t
 read PHP settings in <code class="docutils literal"><span class="pre">.htaccess</span></code> these settings and permissions must be set
-in the <code class="docutils literal"><span class="pre">owncloud/.user.ini</span></code> file.</p>
+in the <code class="docutils literal"><span class="pre">nextcloud/.user.ini</span></code> file.</p>
 </div>
 <div class="section" id="other-web-servers">
 <span id="other-http-servers-label"></span><h2>Other Web Servers<a class="headerlink" href="#other-web-servers" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="nginx_examples.html"><em>Nginx Example Configurations</em></a></p>
-<p><a class="reference external" href="https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes">Other HTTP servers</a></p>
-<p><a class="reference external" href="https://github.com/owncloud/documentation/wiki/UCS-Installation">Univention Corporate Server installation</a></p>
+<p><a class="reference external" href="https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes">Other HTTP servers (Nextcloud)</a></p>
+<p><a class="reference external" href="https://github.com/owncloud/documentation/wiki/UCS-Installation">Univention Corporate Server installation (ownCloud)</a></p>
 </div>
 </div>
 
@@ -560,7 +547,7 @@ in the <code class="docutils literal"><span class="pre">owncloud/.user.ini</span
     </a>
   </li>
   <li class="next">
-    <a href="appliance_installation.html" title="Next Chapter: Nextcloud Community Appliance"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Nextcloud Com... &raquo;</span>
+    <a href="php_54_installation.html" title="Next Chapter: Installing PHP 5.4 on RHEL 6 and CentOS 6"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Installing PH... &raquo;</span>
     </a>
   </li>
 </ul>
